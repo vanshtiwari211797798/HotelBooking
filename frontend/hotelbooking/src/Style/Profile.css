@@ -1,0 +1,200 @@
+.sec3{
+	min-height:600px;
+	width:100%;
+	border: 2px solid green;
+	padding: 10px;
+	display: flex;
+	align-items:center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 18px;
+}
+.Link{
+    text-decoration: none;
+}
+.profilePic{
+	height: 550px ;
+	width: 29%;
+	background-color: #002233;
+	border: 2px double black;
+	
+}
+.profileData{
+	height: 549px ;
+	width: 45%;	
+	
+}
+@media (max-width:1024px){
+	.profilePic{
+		width: 45%
+		
+	}
+	.profileData{
+
+		width: 45%;	
+	}
+}
+
+@media (max-width:768px){
+	.profilePic{
+		width: 98%
+		
+	}
+	.profileData{
+		
+		width: 98%;	
+	}
+}
+.profileImg{
+	height: 235px ;
+	padding-top: 28px;
+}
+.imgDiv{
+	height: 190px ;	
+	align-content: center;
+	width: 190px;
+	border-radius: 50%;
+	margin: 12px auto;
+	position: relative;
+}
+.imge{
+border-radius:50%;	
+outline: 8px double #fff;
+transition: ease-out;
+	transition-duration: 2s;
+}
+.imge:hover{
+	transition: ease-out;
+	transition-duration: 2s;
+	background-color: #000;
+}
+.imgDiv img{
+	border-radius:50% ;	
+	bottom:0px ;
+	}
+.img{
+	position: absolute;
+	outline:3px solid #fff ;
+	background: #002233;
+	left:136px;
+	top:140px;
+	transition: ease-out;
+	transition-duration: 2s;
+}
+.img:hover{
+	transition: ease-out;
+	transition-duration: 2s;
+	background-color: #000;
+}
+.profileName{
+	height: 310px ;
+	padding: 38px;	
+	position: relative;
+}
+.butn button {
+	height: 40px;
+	width: 120px;
+	background-color: #eeeeee;
+	border-radius: 20px;
+	transition: ease-in-out;
+	transition-duration: 2s;
+	border-style: none;
+	font-size: 20px;
+	position: absolute;
+	right:130px;
+	top: 110px;
+	color: #002233;
+	transition: ease-in-out;
+  transition-duration: 2s;
+}
+.butn  a{
+	color:#002233;
+}
+.butn:hover button{
+  transition: ease-in-out;
+  transition-duration: 2s;
+  color:#134b70 ;
+  letter-spacing: 2px;
+}
+.profileForm{
+	min-height: 450px ;	
+	background-color:#eeeeee;
+	margin-bottom:10px;
+	padding: 40px;
+}
+.proform11{
+	min-height: 375px ;	
+	width:100%;
+	color: #002233;
+}
+.proform11 h3{
+	padding: 0px 0px 30px 0px;
+	font-size:32px;
+	text-align: center;
+}
+.proform11 input{
+	width: 99%;
+	padding: 5px 0px;
+	display: block;
+	background: transparent;
+	font-family: Arial;
+	font-size: 16px;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	margin-bottom: 20px;
+	color:#002233;
+}
+
+.proform11 input[type="submit"]{
+	width:120px;
+	border:2px solid #002233;
+	padding:10px ;
+	border-radius:40px ;
+	margin-top:10px;
+}
+
+.proform11 input:focus{
+ outline:none;
+}
+.proform11 input:hover{
+	border-style: dotted;
+}
+ .profileForm2{
+	width: 100%;
+	min-height: 80px;
+	border-top: 1px solid silver;
+	position: absolute;
+	background-color: #002233;
+	padding:20px; 
+	bottom: 0;
+	right: 0;
+}
+.profileForm3{
+	min-height: 89px;
+	width: 44.3%;
+	position: absolute;
+	border-top: 1px solid silver;
+	background-color: #002233;
+	padding-top: 22px; 
+	padding-left: 22px;
+	color: white;
+	right:175px;
+	bottom:31px;
+
+}
+#save{
+	height: 43px;
+	width: 120px;
+	background-color:#002233;
+	border-radius: 30px;
+	transition: ease-in-out;
+	transition-duration: 2s;
+	border-style: none;
+	font-size: 20px;
+	color:#fff;
+	 
+}
+#save:hover{
+	letter-spacing: 2px;
+}

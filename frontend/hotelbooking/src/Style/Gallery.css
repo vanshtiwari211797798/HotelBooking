@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .animation {
+    position: relative;
+    width: 100%;
+    height: 70vh; /* Increased height for better visibility */
+    overflow: hidden;
+  }
+  
+  .img_1 {
+    width: 100%;
+    height: 100%; /* Ensures the video fills the container */
+    object-fit: cover; /* Maintains aspect ratio */
+  }
+  
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically if needed */
+    padding: 0; /* Remove padding */
+    margin: 50px auto; /* Remove margin */
+  }
+  
+  .gallery {
+    margin: 0; /* Remove margin */
+    font-size: 2rem;
+  }
+  
+  .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    width: 100%; /* Make sure the grid takes full width */
+    max-width: 1200px; /* Optional: limit the maximum width */
+  }
+  
+  .box {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+  }
+  
+  .box:hover {
+    transform: scale(1.05);
+  }
+  
+  .img_2 {
+    width: 100%;
+    height: 150px; /* You can adjust this height as needed */
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .imag {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .imag:hover {
+    color: #ffcc00;
+  }
+  
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+  
+  #noneimg {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 8px;
+  }
+  
+  .close {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  

@@ -1,0 +1,228 @@
+/* Login.css */
+
+.login-main_container {
+    min-height: 400px;
+    max-width: 600px;
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.login-form {
+    width: 90%;
+    background: #528b9e; 
+    border: 5px solid #518c9c; 
+    display: flex;
+    border-radius: 20px;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 40px;   
+}
+
+.login-form-container {
+    width: 80%;
+    background: rgba(238, 238, 238, 1);
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.login-form-container:hover {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-header-box {
+    background: #002233;
+    padding-top: 20px; 
+    padding-bottom: 20px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.log-header {
+    text-align: center;
+    font-size: 24px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: white;
+}
+
+.log-input-box {
+    width: 90%; /* Ensure full width */
+    margin-top: 30px;
+    margin-left: 16px; /* Remove left margin */
+    position: relative;
+}
+
+.log-lebel {
+    display: block;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.log-icon {
+    font-size: 22px;    
+}
+
+.log-input-box i {
+    position: absolute;
+    top: 35px;
+    left: 14px;
+    color: #002233;
+    border-right: 2px solid #cccccc;
+    padding: 6px;
+}
+
+.log-input {
+    width: 100%; /* Set input width to 100% */
+    padding: 11px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background-color: #eeeeee;
+    border: none;
+    box-shadow: 0 3px 10px rgba(81, 140, 156, 255);
+    font-size: 17px;
+    padding-left: 42px; /* Keep padding for the icon */
+}
+
+.log-input:focus {
+    outline: none;
+    border-color: #eeeeee;
+}
+
+.log-input:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-forget {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.login-forget a {
+    text-decoration: none;
+    color: #002233;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.log-button {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%; /* Make button full width */
+}
+
+.login-button {
+    padding: 13px 20px;
+    border-radius: 20px;
+    background: #002233;
+    border: none;
+    color: white;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.login-button:hover {
+    cursor: pointer;
+    background-color: #45a049;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.login-welcome {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.login-welcome h1 {
+    font-size: 30px;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #002233;
+    letter-spacing: 2px;
+}
+
+.login-welcome p {
+    font-size: 14px;
+    font-weight: 400;
+    color: #002233;
+    margin-top: 3px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.reg-link {
+    text-align: center;
+    font-size: 15px;
+    background: #002233;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    border-radius: 0px 0px 10px 10px;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+}
+
+.reg-link a {
+    color: #ffffff;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login-main-container {
+        margin-top: 0;
+    }
+
+    .login-form {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .login-form-container {
+        width: 90%;
+        margin: 20px 0;
+    }
+    
+    .log-input {
+        width: 100%; /* Ensure full width on smaller screens */
+        padding-left: 70px; /* Keep icon padding */
+    }
+
+    .login-button {
+        width: 70%;
+    }
+}
+
+@media (max-width: 480px) {
+    .log-header {
+        font-size: 20px;
+    }
+
+    .log-input {
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .login-button {
+        width: 80%;
+    }
+
+    .login-welcome h1 {
+        font-size: 24px;
+    }
+
+    .login-welcome p {
+        font-size: 12px;
+    }
+
+    .reg-link {
+        font-size: 16px;
+        padding: 20px;
+    }
+}
+
+/* Box Sizing */
+* {
+    box-sizing: border-box; /* Include padding and borders in element's total width and height */
+}
