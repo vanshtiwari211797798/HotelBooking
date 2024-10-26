@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { ToastContainer } from 'react-toastify';
+// import {BallTriangle} from 'react-loader-spinner'
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -20,5 +21,8 @@ draggable
 theme="colored"
 transition: Bounce
 />
+{/* <BallTriangle
+
+  /> */}
   </>
 )

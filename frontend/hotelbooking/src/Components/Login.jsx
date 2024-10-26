@@ -37,7 +37,7 @@ const Login = () => {
                 localStorage.setItem('usertoken',res.data.token)
                 toast.success("Login Successfully")
                 setLogin({email:"",password:""});
-                navigate("/");
+                navigate("/profile");
             }else{
                 toast.error("Somethings went wrong")
                 setLogin({email:"",password:""});
