@@ -38,6 +38,7 @@ const Login = () => {
                 toast.success("Login Successfully")
                 setLogin({email:"",password:""});
                 navigate("/profile");
+                console.log('hello')
             }else{
                 toast.error("Somethings went wrong")
                 setLogin({email:"",password:""});

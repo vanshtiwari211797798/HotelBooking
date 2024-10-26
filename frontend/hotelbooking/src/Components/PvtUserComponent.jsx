@@ -1,11 +1,11 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
-import Login from './Login'
+import { Outlet, Navigate } from 'react-router-dom'
+
 
 
 const PvtUserComponent = () => {
     const auth = localStorage.getItem("usertoken")
-    return auth ? <Outlet /> : <Login />
+    return auth ? <Outlet /> : <Navigate to={'/login'} />
 }
 
 export default PvtUserComponent

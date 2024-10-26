@@ -89,27 +89,27 @@ const Home = () => {
         <Facility />
         {/*Facilities section end */}
         {/* Room section start */}
-        <div class="inner3-1n2">
-                <div class="wrapper">
+        <div className="inner3-1n2">
+                <div className="wrapper">
                     <h1>Deluxe</h1>
-                    <div class="image i1"></div>
-                    <div class="details">
+                    <div className="image i1"></div>
+                    <div className="details">
                         <a href="">View Details</a>
                     </div>
                     <h1>₹2000-7000</h1>
                   </div>  
-                  <div class="wrapper">
+                  <div className="wrapper">
                     <h1>Super Deluxe</h1>
-                    <div class="image i2"></div>
-                    <div class="details">
+                    <div className="image i2"></div>
+                    <div className="details">
                         <a href="">View Details</a>
                     </div>
                     <h1>₹6500-10000</h1>
                   </div>
-                  <div class="wrapper">
+                  <div className="wrapper">
                     <h1>Luxury</h1>
-                    <div class="image i3"></div>
-                    <div class="details">
+                    <div className="image i3"></div>
+                    <div className="details">
                         <a href="">View Details</a>
                     </div>
                     <h1>₹8500-14  000</h1>

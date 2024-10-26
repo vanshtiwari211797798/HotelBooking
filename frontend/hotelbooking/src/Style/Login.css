@@ -85,7 +85,7 @@
     border: none;
     box-shadow: 0 3px 10px rgba(81, 140, 156, 255);
     font-size: 17px;
-    padding-left: 42px; /* Keep padding for the icon */
+    padding-left: 51px; /* Keep padding for the icon */
 }
 
 .log-input:focus {
