@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import '../Style/Booking.css'
-import Header from './Header';
-import Footer from './Footer';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MyBooking = () => {
+
+  const navigate = useNavigate();
+
     const [MyBooking, setMyBooking] = useState([])
 
 
@@ -59,6 +60,8 @@ const MyBooking = () => {
     useEffect(() => {
         if(localStorage.getItem('usertoken')){
             getAllBooking();
+        }else{
+          navigate('/login')
         }
     
     }, [])
@@ -67,7 +70,7 @@ const MyBooking = () => {
 
   return (
     <>
-    <Header />
+
    {
     MyBooking.length > 0 ? 
     <div className="table-container">
@@ -127,7 +130,7 @@ const MyBooking = () => {
   <h3>NOT ROOM BOOK YET</h3>
    }
 
-    <Footer />
+
     </>
   );
 };

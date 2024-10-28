@@ -1,17 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../Style/Home.css'
 import author from '../Images/vansh.jpeg'
 import Rooms from './Rooms'
+import luxery from '../Images/1.jpg'
 import Facility from './Facility'
-import Header from './Header'
-import Footer from './Footer'
+
 
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <div className="h-outer">
         {/* hero section start */}
         <div className="h-hero">
@@ -25,14 +28,14 @@ const Home = () => {
             <Link to="/">Discover Room</Link>
           </div>
           <div className="home_container">
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="destination">Enter a destination </label>
               <input
                 type="text"
                 id="destination"
                 placeholder="Enter a destination "
               />
-            </div>
+            </div> */}
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="checkin">Check-in</label>
@@ -43,7 +46,7 @@ const Home = () => {
                 <input type="datetime-local" id="checkout" />
               </div>
             </div>
-            <div className="form-group">
+            {/* <div className="form-group">
               <label htmlFor="guests">Guests</label>
               <select id="guests">
                 <option value="">Select Adults</option>
@@ -52,17 +55,7 @@ const Home = () => {
                 <option value={3}>3 Adults</option>
                 <option value={4}>4 Adults</option>
               </select>
-            </div>
-            <div className="form-group">
-              <label htmlFor="child">Child</label>
-              <select id="child">
-                <option value="">Select Childs</option>
-                <option value={1}>1 Child</option>
-                <option value={2}>2 Childs</option>
-                <option value={3}>3 Childs</option>
-                <option value={4}>4 Childs</option>
-              </select>
-            </div>
+            </div> */}
             <button className="search-btn">SEARCH</button>
           </div>
         </div>
@@ -81,7 +74,7 @@ const Home = () => {
               accommodations, ensuring a restful retreat whether you're here for
               business or leisure.
             </p>
-            <input type="button" defaultValue="Learn More" />
+            <input type="button" defaultValue="Learn More" onClick={() => navigate('/about')}/>
           </div>
         </div>
         {/* about section end */}
@@ -90,32 +83,38 @@ const Home = () => {
         {/*Facilities section end */}
         {/* Room section start */}
         <div className="inner3-1n2">
-                <div className="wrapper">
-                    <h1>Deluxe</h1>
-                    <div className="image i1"></div>
-                    <div className="details">
-                        <a href="">View Details</a>
-                    </div>
-                    <h1>₹2000-7000</h1>
-                  </div>  
-                  <div className="wrapper">
-                    <h1>Super Deluxe</h1>
-                    <div className="image i2"></div>
-                    <div className="details">
-                        <a href="">View Details</a>
-                    </div>
-                    <h1>₹6500-10000</h1>
-                  </div>
-                  <div className="wrapper">
-                    <h1>Luxury</h1>
-                    <div className="image i3"></div>
-                    <div className="details">
-                        <a href="">View Details</a>
-                    </div>
-                    <h1>₹8500-14  000</h1>
-                  </div>
-      
+          <div className="wrapper">
+            <h1>Deluxe</h1>
+            <div className="image">
+              <img src={luxery} alt="delux room price" title='delux room' />
             </div>
+            <div className="details">
+            <Link to={`/types_rooms/${'deluxe'}`}>View Details</Link>
+            </div>
+            <h1>₹2000-7000</h1>
+          </div>
+          <div className="wrapper">
+            <h1>Super Deluxe</h1>
+            <div className="image">
+              <img src={luxery} alt="super delux room price" title='super delux room' />
+            </div>
+            <div className="details">
+            <Link to={`/types_rooms/${'super-delux'}`}>View Details</Link>
+            </div>
+            <h1>₹6500-10000</h1>
+          </div>
+          <div className="wrapper">
+            <h1>Luxury</h1>
+            <div className="image">
+              <img src={luxery} alt="luxery room price" title='luxery room' />
+            </div>
+            <div className="details">
+              <Link to={`/types_rooms/${'luxery'}`}>View Details</Link>
+            </div>
+            <h1>₹8500-14  000</h1>
+          </div>
+
+        </div>
       </div>
       {/* Room section end */}
       {/* Testimonial section start */}
@@ -266,7 +265,6 @@ const Home = () => {
       {/* java script section start */}
       {/* java script section start */}
 
-      <Footer />
     </>
 
 

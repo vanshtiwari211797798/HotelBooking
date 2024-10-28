@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import '../Style/Profile.css'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
 import { toast } from 'react-toastify'
 import {BallTriangle} from 'react-loader-spinner'
 
 
 const Profile = () => {
+
+    const navigate = useNavigate();
 
 
     const [MYprofile, setProfile] = useState({
@@ -90,13 +90,14 @@ const Profile = () => {
     useEffect(() => {
         if(localStorage.getItem('usertoken')){
             myProfile();  
+        }else{
+            navigate('/login')
         }
           
     }, [])
 
     return (
         <>
-       <Header />
        <div className="loader-spinner">
        {
             MYprofile.fname ? 
@@ -176,7 +177,6 @@ const Profile = () => {
        </div>
  
     
-            <Footer />
         </>
 
     )

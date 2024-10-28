@@ -3,8 +3,7 @@ import img1 from '../Images/1.jpg';
 import img2 from '../Images/2.jpg';
 import '../Style/Gallery.css';
 import vdo from '../Images/tech4.mp4'
-import Header from './Header';
-import Footer from './Footer';
+
 
 
 
@@ -33,7 +32,7 @@ const Gallery = () => {
 
   return (
     <>
-    <Header />
+
       <section className="animation">
         <div className="div">
           <video className="img_1" src={vdo} autoPlay loop muted />
@@ -68,7 +67,6 @@ const Gallery = () => {
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 };

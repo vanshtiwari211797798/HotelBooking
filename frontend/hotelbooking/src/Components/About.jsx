@@ -2,13 +2,12 @@ import React from 'react'
 import '../Style/About.css'
 import img from '../Images/1.jpg'
 import video from '../Images/tech4.mp4'
-import Header from './Header'
-import Footer from './Footer'
+
 
 const About = () => {
   return (
     <>
-   <Header />
+
     {/* video section start */}
     <div className="video">
       <div className="video-background">
@@ -102,7 +101,7 @@ const About = () => {
       </div>
     </section>
     {/* about page end */}
-    <Footer />
+
   </>
   
   )

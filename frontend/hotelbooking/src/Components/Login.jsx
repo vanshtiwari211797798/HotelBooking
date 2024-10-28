@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../Style/Login.css'
 import { Link, useNavigate } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 
@@ -70,7 +68,7 @@ const Login = () => {
     }, [])
     return (
         <>
-            <Header />
+
             <>
 
                 <div className="login-main_container">
@@ -131,7 +129,7 @@ const Login = () => {
             </>
 
 
-            <Footer />
+
         </>
 
     )

@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import '../Style/Registration.css';
 import { toast } from 'react-toastify';
 import axios from 'axios';
-import Header from './Header'
-import Footer from './Footer'
 
 
 
@@ -127,7 +125,6 @@ const Registration = () => {
 
   return (
     <>
-    <Header />
       <div className="main-container">
         <form onSubmit={handleSubmit} className='register_form'>
           <h2 className="reg-heading">REGISTRATION</h2>
@@ -183,7 +180,6 @@ const Registration = () => {
           </div>
         </form>
       </div>
-      <Footer />
     </>
   );
 };

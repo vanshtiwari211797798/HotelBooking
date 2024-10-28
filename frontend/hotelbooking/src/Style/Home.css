@@ -122,7 +122,7 @@
 .h-hero{
     min-height: 300px;
     width: 100%;
-    /* background: url(../Images/1.jpg); */
+    background: url(../Images/1.jpg);
     background-attachment: fixed;
     background-size: cover;
     display: flex;
@@ -133,7 +133,7 @@
 /*  Booking Table Start */
 .home_container {
     min-height:50px;
-    width: 95%;
+    width: 62%;
     background-color: #f1f1f1;
     box-shadow: 0px 0px 10px #555;
     border-radius: 10px;
@@ -246,7 +246,7 @@
 .inner1-in1{
     min-height: 500px;
     width: 40%;
-    background: ''("../Images/7.jpg");
+    background: url("../Images/7.jpg");
     background-size: contain;
     background-attachment: fixed;
     /* background-repeat: no-repeat; */
@@ -481,15 +481,9 @@
     box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     transform: translate(0px, -3px) scale(1.02);
   }
-    
-  .i1{
-      background-image: url('../Images/2.jpg');
-  }
-  .i2 {
-    background-image: url('../Images/1.jpg');
-  }
-  .i3 {
-    background-image: url('../Images/3.jpg');
+    .image img{
+        height:100%;
+        width:100%;
     }
 .rooms-outer{
     width: 100%;
@@ -669,7 +663,7 @@
 .inner6-in1-img{
     height: 350px;
     width: 100%;
-    background: ''("../Images/room_15.png");
+    background: url("../Images/room_15.png");
     background-attachment: fixed;
     background-size: contain;
 }
@@ -725,7 +719,7 @@
     height: 300px;
     width: 40%;
     border-radius: 10px;
-    background: ''("../Images/19.jpg");
+    background: url("../Images/19.jpg");
     background-attachment: fixed;
     background-size: contain;
 }
@@ -769,7 +763,7 @@
     height: 300px;
     width: 40%;
     border-radius: 10px;
-    background: ''("../Images/14.jpg");
+    background: url("../Images/14.jpg");
     background-attachment: fixed;
     background-size: contain;
 }
@@ -835,35 +829,35 @@
 .inner7-in2-img1{
     min-height:350px;
     width: 18%;
-    background: ''("../Images/2.jpg");
+    background: url("../Images/2.jpg");
     background-size:cover;
     background-attachment:fixed;
 }
 .inner7-in2-img2{
     min-height:350px;
     width: 18%;
-    background: ''("../Images/11.jpg");
+    background: url("../Images/11.jpg");
     background-size:cover;
     background-attachment:fixed;
 }
 .inner7-in2-img3{
     min-height:350px;
     width: 18%;
-    background: ''("../Images/12.jpg");
+    background: url("../Images/12.jpg");
     background-size:cover;
     background-attachment:fixed;
 }
 .inner7-in2-img4{
     min-height:350px;
     width: 18%;
-    background: ''("../Images/20.jpg");
+    background: url("../Images/20.jpg");
     background-size:cover;
     background-attachment:fixed;
 }
 .inner7-in2-img5{
     min-height:350px;
     width: 18%;
-    background: ''("../Images/19.jpg");
+    background: url("../Images/19.jpg");
     background-size:cover;
     background-attachment:fixed;
 }

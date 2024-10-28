@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import '../Style/Room_Detail.css';
 import { toast } from 'react-toastify';
 import { useParams, useNavigate } from 'react-router-dom';
-import Header from './Header'
-import Footer from './Footer'
 
 
 const ViewBookingRoom = () => {
@@ -196,7 +194,6 @@ const ViewBookingRoom = () => {
 
   return (
     <>
-      <Header />
       <div className="room-details">
         <div className="image-container">
           <img src={`http://localhost:3000/${room.room_image}`} className="room-image" alt={'room Image'} title={`Room number ${room.room_number}`} />
@@ -220,7 +217,6 @@ const ViewBookingRoom = () => {
           <button className="book-now-button" onClick={updateNow}>Update</button>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
