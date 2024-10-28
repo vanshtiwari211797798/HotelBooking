@@ -20,7 +20,7 @@ const authProfileChecker = async (req, res, next) => {
             next();
         }
     } catch (error) {
-        console.error('error from fetch user profile');
+        console.error('error from fetch user profile',error);
     }
 }
 
