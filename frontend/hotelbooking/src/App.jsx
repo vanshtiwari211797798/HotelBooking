@@ -159,6 +159,7 @@ const App = () => {
 
   return (
     <>
+    {/* You can add jQuery code here */}
       <RouterProvider router={router} />
     </>
   )
