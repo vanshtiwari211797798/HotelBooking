@@ -3,13 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../Style/Home.css'
 import author from '../Images/vansh.jpeg'
 import Rooms from './Rooms'
-import luxery from '../Images/1.jpg'
 import Facility from './Facility'
+import Category from './Category'
 
 
 
 const Home = () => {
 
+  // useNavigate hook used for navigating the user to another page or link
   const navigate = useNavigate();
 
   return (
@@ -25,7 +26,7 @@ const Home = () => {
               Choosing Bokinn was one of the best decisions we've ever made. They
               have proven to be a reliable and innovative partner
             </p>
-            <Link to="/">Discover Room</Link>
+            {/* <Link to="/">Discover Room</Link> */}
           </div>
           <div className="home_container">
             {/* <div className="form-group">
@@ -81,42 +82,10 @@ const Home = () => {
         {/*Facilities section start */}
         <Facility />
         {/*Facilities section end */}
-        {/* Room section start */}
-        <div className="inner3-1n2">
-          <div className="wrapper">
-            <h1>Deluxe</h1>
-            <div className="image">
-              <img src={luxery} alt="delux room price" title='delux room' />
-            </div>
-            <div className="details">
-            <Link to={`/types_rooms/${'deluxe'}`}>View Details</Link>
-            </div>
-            <h1>₹2000-7000</h1>
-          </div>
-          <div className="wrapper">
-            <h1>Super Deluxe</h1>
-            <div className="image">
-              <img src={luxery} alt="super delux room price" title='super delux room' />
-            </div>
-            <div className="details">
-            <Link to={`/types_rooms/${'super-delux'}`}>View Details</Link>
-            </div>
-            <h1>₹6500-10000</h1>
-          </div>
-          <div className="wrapper">
-            <h1>Luxury</h1>
-            <div className="image">
-              <img src={luxery} alt="luxery room price" title='luxery room' />
-            </div>
-            <div className="details">
-              <Link to={`/types_rooms/${'luxery'}`}>View Details</Link>
-            </div>
-            <h1>₹8500-14  000</h1>
-          </div>
-
-        </div>
       </div>
-      {/* Room section end */}
+      {/* Category start */}
+            <Category />
+      {/* category end */}
       {/* Testimonial section start */}
       <div className="inner4">
         <div className="inner4-in1">

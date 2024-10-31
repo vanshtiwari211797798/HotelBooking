@@ -23,6 +23,7 @@ import MyBooking from './Components/MyBooking'
 import ViewBookingRoom from './Components/ViewBookingRoom'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
+import TypesRoom from './Components/TypesRoom'
 
 
 // for Routing -> Pakage Name is react-router-dom
@@ -88,6 +89,14 @@ const router = createBrowserRouter([
     element: <div>
       <Header />
       <MyBooking />
+      <Footer />
+    </div>
+  },
+  {
+    path: '/types_room/:id',
+    element: <div>
+      <Header />
+      <TypesRoom />
       <Footer />
     </div>
   },
