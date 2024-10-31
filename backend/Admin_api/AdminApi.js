@@ -8,13 +8,14 @@ const ContactModel = require('../ContactModel/ContactModel');
 const EnquiryModel = require('../EnquiryModel/EnquiryModel');
 const SpecialOfferroomModel = require('../Special_Offers_Model/Special_offersModel');
 const roomBookingModel = require('../RoomBookingModel/RoomBooking_Model');
+const CategoryModel = require('../RommCategoryModel/RoomCategory');
 const multer = require('multer');
 const authProfileChecker = require('../Auth/profileauth');
 const userModel = require('../UserModel/UserModel');
 
 
 
-// admin end point url - http://localhost:3000/admin/api/add-room
+// admin end point url - http://localhost:3000/admin/api/add-room-category
 
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNoQGdtYWlsLmNvbSIsImlhdCI6MTcyNzI3ODk3NSwiZXhwIjoxNzI3NDUxNzc1fQ.2wyLquF3nKJPId4jhm1iwKv_F64ebKwOqYA4n4W3aJ8
@@ -44,9 +45,22 @@ const storage = multer.diskStorage({
     }
 })
 
+// for uploading profile image
+const room_category = multer.diskStorage({
+    destination: function (req, file, cb) {
+        return cb(null, './room_category')
+    },
+    filename: function (req, file, cb) {
+        // return cb(null, `${Date.now()}-${file.originalname}`);
+        return cb(null, `${Date.now()} - ${file.originalname}`)
+    }
+})
+
 const uploadProfile = multer({ storage: storage })
 
 const upload = multer({ storage: room })
+
+const uploadCategory = multer({ storage: room_category })
 
 
 //USER PROFILE API FOR SHOWING CURRENT LOGIN ADMIN OR SUB-ADMIN PROFILE
@@ -103,17 +117,17 @@ adminrouter.get(('/get-all-room'), tokenchecker, async (req, res) => {
 adminrouter.put(('/update-room/:id'), tokenchecker, upload.single('room_image'), async (req, res) => {
     try {
 
-        const {room_number, room_category, room_description, room_price, total_beds, capacity, room_booking_status} = req.body
+        const { room_number, room_category, room_description, room_price, total_beds, capacity, room_booking_status } = req.body
         const roomId = req.params.id;
 
         const room = await roomModel.findById(roomId);
 
-            const rooms = await roomModel.findByIdAndUpdate(roomId, {room_number, room_category, room_description, room_price, total_beds, capacity, room_booking_status, room_image:req.file ? req.file.path : room.room_image}, { new: true });
+        const rooms = await roomModel.findByIdAndUpdate(roomId, { room_number, room_category, room_description, room_price, total_beds, capacity, room_booking_status, room_image: req.file ? req.file.path : room.room_image }, { new: true });
 
-            if (rooms) {
-                return res.status(200).json({ roomData: rooms });
-            }
-        
+        if (rooms) {
+            return res.status(200).json({ roomData: rooms });
+        }
+
     } catch (error) {
         console.error('Error from update Room', error);
     }
@@ -143,18 +157,53 @@ adminrouter.get(('/get-room/:id'), tokenchecker, async (req, res) => {
     try {
         const id = req.params.id;
 
-        if(id){
+        if (id) {
             const room = await roomModel.findById(id);
 
-            if(room){
-                return res.status(200).json({Room:room})
+            if (room) {
+                return res.status(200).json({ Room: room })
             }
         }
     } catch (error) {
-       console.error('error from get room by id', error); 
+        console.error('error from get room by id', error);
     }
 })
 
+
+// add room category 
+adminrouter.post(('/add-room-category'), uploadCategory.single('room_category_image'), async (req, res) => {
+    try {
+        const { room_category_name, room_category_price } = req.body;
+        const room_category_image = req.file.path;
+
+        if (!room_category_image || !room_category_name || !room_category_price) {
+            return res.status(400).json({ msg: "all field is required" })
+        }
+
+        const newCategory = await CategoryModel({ room_category_name, room_category_price, room_category_image });
+        await newCategory.save();
+        if (newCategory) {
+            return res.status(201).json({ msg: "Category added successfully" });
+        }
+
+
+    } catch (error) {
+        console.error('error from add room category', error);
+    }
+})
+
+
+// get all category
+adminrouter.get(('/get-category'), tokenchecker, async (req, res) => {
+    try {
+        const category = await CategoryModel.find();
+        if(category){
+            return res.status(200).json({category:category})
+        }
+    } catch (error) {
+        console.error("error from get all category in admin dashboard", error);
+    }
+})
 
 // add special offer room
 adminrouter.post(('/add-special-room'), tokenchecker, async (req, res) => {
@@ -278,17 +327,17 @@ adminrouter.get(('/get-all-user'), tokenchecker, async (req, res) => {
 adminrouter.put(('/update-user/:id'), tokenchecker, uploadProfile.single('profile'), async (req, res) => {
     try {
         // const id = req.params.id;
-           const {fname, lname, phone, email, aadhar_number, role} = req.body
-           const userId = req.params.id
+        const { fname, lname, phone, email, aadhar_number, role } = req.body
+        const userId = req.params.id
 
-           const existUser = await userModel.findById(userId);
+        const existUser = await userModel.findById(userId);
 
-            const updateUser = await UserModel.findByIdAndUpdate(req.params.id, {fname, lname, phone, email, aadhar_number, role, profile:req.file ? req.file.path : existUser.profile}, { new: true });
+        const updateUser = await UserModel.findByIdAndUpdate(req.params.id, { fname, lname, phone, email, aadhar_number, role, profile: req.file ? req.file.path : existUser.profile }, { new: true });
 
-            if (updateUser) {
-                return res.status(200).json({ updatedUser: updateUser });
-            }
-     
+        if (updateUser) {
+            return res.status(200).json({ updatedUser: updateUser });
+        }
+
     } catch (error) {
         console.error('error from update user from admin', error);
     }
@@ -320,7 +369,7 @@ adminrouter.get(('/get-user-details/:id'), tokenchecker, async (req, res) => {
         if (id) {
             const profile = await UserModel.findById(id);
 
-            if (profile) {  
+            if (profile) {
                 return res.status(200).json({ Profile: profile });
             }
         }
@@ -380,11 +429,11 @@ adminrouter.get(('/get-contact-id/:id'), async (req, res) => {
     try {
         const id = req.params.id
 
-        if(id){
+        if (id) {
             const contactData = await ContactModel.findById(id);
 
-            if(contactData){
-                return res.status(200).json({contact:contactData})
+            if (contactData) {
+                return res.status(200).json({ contact: contactData })
             }
         }
 
@@ -451,11 +500,11 @@ adminrouter.get(('/get-enquiry-id/:id'), tokenchecker, async (req, res) => {
     try {
         const id = req.params.id;
 
-        if(id){
+        if (id) {
             const getEnquiry = await EnquiryModel.findById(id);
 
-            if(getEnquiry){
-                return res.status(200).json({enq:getEnquiry});
+            if (getEnquiry) {
+                return res.status(200).json({ enq: getEnquiry });
             }
         }
     } catch (error) {
@@ -483,11 +532,11 @@ adminrouter.put(('/update-booking/:id'), tokenchecker, async (req, res) => {
     try {
         const id = req.params.id
 
-        if(id){
+        if (id) {
             const updatedHotel = await roomBookingModel.findByIdAndUpdate(id);
 
-            if(updatedHotel){
-                return res.status(200).json({updated_hotel:updatedHotel});
+            if (updatedHotel) {
+                return res.status(200).json({ updated_hotel: updatedHotel });
             }
         }
     } catch (error) {
@@ -501,10 +550,10 @@ adminrouter.delete(('/delete-booking/:id'), tokenchecker, async (req, res) => {
     try {
         const id = req.params.id;
 
-        if(id){
+        if (id) {
             const deleteBooking = await roomBookingModel.findByIdAndDelete(id);
 
-            if(deleteBooking){
+            if (deleteBooking) {
                 return res.status(200).json('Deleted Successfully')
             }
         }

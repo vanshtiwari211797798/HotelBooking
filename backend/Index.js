@@ -16,7 +16,7 @@ app.use(cors(Origin));
 app.use(express.json());
 app.use('/profiles', express.static('profiles'));
 app.use('/rooms', express.static('rooms'))
-app.use('/booking_rooms', express.static('booking_rooms'));
+app.use('/room_category', express.static('room_category'));
 
 
 // For admin side api router

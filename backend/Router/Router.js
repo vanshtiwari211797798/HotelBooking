@@ -9,6 +9,7 @@ const RoomsModel = require('../RoomsModel/RoomsHotelsModel');
 const ContactModel = require('../ContactModel/ContactModel');
 const EnquiryModel = require('../EnquiryModel/EnquiryModel');
 const roomBookingModel = require('../RoomBookingModel/RoomBooking_Model');
+const CategoryModel = require('../RommCategoryModel/RoomCategory');
 const tokenchecker = require('../Auth/TokenChecker')
 const profileauth = require('../Auth/profileauth')
 const multer = require('multer');
@@ -48,7 +49,7 @@ const upload = multer({ storage: MyProfile })
 
 // [CLIENT SIDE API]
 
-// user end point url - http://localhost:3000/client/origional-room-price/
+// user end point url - http://localhost:3000/client/get-all-category
 
 //REGISTER API FOR REGISTER A NEW USER
 router.post(('/register'), upload.single('profile'), async (req, res) => {
@@ -212,6 +213,19 @@ router.post(('/enquiry'), async (req, res) => {
 
     } catch (error) {
         console.error('error form enquiry api', error)
+    }
+})
+
+// get all category
+router.get(('/get-all-category'), async (req, res) => {
+    try {
+        const allCategory = await CategoryModel.find();
+
+        if(allCategory){
+            return res.status(200).json({category:allCategory});
+        }
+    } catch (error) {
+        console.error('error from get category client side', error);
     }
 })
 
