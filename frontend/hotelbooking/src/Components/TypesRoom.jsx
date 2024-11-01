@@ -15,6 +15,7 @@ const TypesRoom = () => {
     const getCategoryRoom = async () => {
       
         try {
+            // when setloader true then loader start 
             setLoader(true)
             const res = await fetch(`http://localhost:3000/client/get-types-room/${roomType}`, {
                 method: "GET"
