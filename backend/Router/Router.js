@@ -49,7 +49,7 @@ const upload = multer({ storage: MyProfile })
 
 // [CLIENT SIDE API]
 
-// user end point url - http://localhost:3000/client/get-all-category
+// user end point url - http://localhost:3000/client/get-types-room/:room_category_name
 
 //REGISTER API FOR REGISTER A NEW USER
 router.post(('/register'), upload.single('profile'), async (req, res) => {
@@ -226,6 +226,26 @@ router.get(('/get-all-category'), async (req, res) => {
         }
     } catch (error) {
         console.error('error from get category client side', error);
+    }
+})
+
+// show all rooms by category name - dilux / superdilux / luxery etc...
+router.get(('/get-types-room/:room_category_name'), async (req, res) => {
+    try {
+        const {room_category_name} = req.params;
+
+        if(!room_category_name){
+            return res.status(400).json({msg:"Category room not received from parameter"});
+        }
+        
+        const category = await roomModel.find({
+            room_category:room_category_name});
+
+        if(category){
+            return res.status(200).json({category:category});
+        }
+    } catch (error) {
+        console.error('error from get category room', error);
     }
 })
 
