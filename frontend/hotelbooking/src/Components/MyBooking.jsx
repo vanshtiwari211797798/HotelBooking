@@ -118,7 +118,7 @@ const MyBooking = () => {
             <td>{item.booking_date}</td>
             <td>{item.booking_status}</td>
             <td>
-              <Link to={`/view_booking_room/${item._id}`}>View</Link>  
+              <Link  to={`/view_booking_room/${ item.booking_status === 'Pending' ? item._id : ''}`}>View</Link>  
               <button onClick={() => cancelBooking(item)}>Cancel</button>
             </td>
           </tr>

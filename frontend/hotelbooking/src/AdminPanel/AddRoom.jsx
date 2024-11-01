@@ -68,7 +68,12 @@ const AddRoom = () => {
                         </div>
                         <div className="input-box">
                             <label htmlFor="category" className="reg-label">Category:</label>
-                            <input type="text" name="room_category" className="reg-input" onChange={(e) => setroom_category(e.target.value)} value={room_category} required/>
+                            <select name="room_category" className="reg-input" id="room_category" onChange={(e) => setroom_category(e.target.value)} value={room_category}>
+                                <option value="">Select Category..</option>
+                                <option value="dilux">Dilux</option>
+                                <option value="superDilux">superDilux</option>
+                                <option value="Luxery">Luxery</option>
+                            </select>
                         </div>
                     </div>
 

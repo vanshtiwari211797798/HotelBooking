@@ -93,7 +93,7 @@ const router = createBrowserRouter([
     </div>
   },
   {
-    path: '/types_room/:id',
+    path: '/types_rooms/:roomType',
     element: <div>
       <Header />
       <TypesRoom />

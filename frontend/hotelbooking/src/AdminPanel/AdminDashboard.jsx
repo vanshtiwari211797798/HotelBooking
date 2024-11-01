@@ -520,7 +520,7 @@ const AdminDashboard = () => {
                     <div id="room" className="main-content">
                         {
                             admins.role === 1 ?
-                                Rooms.length < 1 ? "NO ANY ROOM FOUND" :
+                               
                                     <div className="table-admin_container">
                                         <h2 className="table-content">Rooms</h2>
                                         <Link to={`/admin/add-room`} className='addRoom'>ADD ROOM</Link>
