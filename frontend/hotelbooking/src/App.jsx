@@ -24,6 +24,7 @@ import ViewBookingRoom from './Components/ViewBookingRoom'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import TypesRoom from './Components/TypesRoom'
+import AddCategory from './AdminPanel/AddCategory'
 
 
 // for Routing -> Pakage Name is react-router-dom
@@ -151,6 +152,10 @@ const router = createBrowserRouter([
   {
     path: '/admin/add-room',
     element: <AddRoom />
+  },
+  {
+    path: '/admin/add-category',
+    element: <AddCategory />
   },
   // 404 Error page, Page not found
   {

@@ -43,7 +43,7 @@ const TypesRoom = () => {
         <>
             <div className="Room-container">
                 <div className="Our-Luxurious">
-                    <h2>Our Luxurious Rooms</h2>
+                    <h2>Our {roomType} Rooms</h2>
                     <p>
                         <Link className='a' to="/">Home</Link>
                     </p>
@@ -58,7 +58,7 @@ const TypesRoom = () => {
                                     <div className="room-img">
                                         <img src={room} alt="" srcSet="" />
                                     </div>
-                                    <div className="room-content">
+                                    <div className="room-contents">
                                         <div className="room-discript">
                                             <h2>{item.room_category}</h2>
                                             <p>

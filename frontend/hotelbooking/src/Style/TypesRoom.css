@@ -8,7 +8,7 @@
 .Our-Luxurious{
    min-height: 80px;
    width: 100%;
-   margin-bottom: 30px ;
+   margin-bottom: 30px;
    padding: 40px 0px;
    background: linear-gradient(165deg, #c67f8c,#bc83a3,#ad88c3) ;
 }
@@ -39,12 +39,13 @@
    width: 45%;
    background-color: #f1f1f1;
    display: flex;
+   flex-wrap:wrap;
    justify-content: space-evenly;
    border-radius:8px;
    box-shadow: 0px 0px 4px #555;
 }
 .room-img{
-   height: 280px;
+   min-height: 280px;
    width:40%;
    overflow: hidden;
    border-radius:8px 0px 0px 8px;
@@ -60,13 +61,15 @@
    border-radius:8px 0px 0px 8px;
    transform: scale(1.1);
 }
-.room-content{
+.room-contents{
    min-height: 200px;
-   width:59%;
+   width:60%;
+   padding-left:10px;
 }
 .room-discript{
-   min-height: 240px;
+   min-height: 220px;
    width:100%;
+   padding-top:10px;
 }
 .room-discript h2{
    font-size: 35px;
@@ -79,7 +82,7 @@
    text-align: justify;
 }
 .room-book{
-   min-height: 20px;
+   min-height: 40px;
    width:100%;
 }
 .room-book .a{
@@ -101,10 +104,21 @@
        width: 98%;
        margin-top: 30px;
    }
+   .room-img{
+      width:100%;
+   }
+   .room-contents{
+      width:100%;
+   }
 }
 @media(max-width:320px){
    .room-discript p {
-       font-size: 16px;
-      
+       font-size: 16px;    
+   }
+   .room-img{
+      width:100%;
+   }
+   .room-contents{
+      width:100%;
    }
 }
