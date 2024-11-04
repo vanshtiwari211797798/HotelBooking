@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import '../Style/TypesRoom.css'
-import room from '../Images/1.jpg'
 import {ThreeDots} from 'react-loader-spinner'
 
 
@@ -39,6 +38,7 @@ const TypesRoom = () => {
         getCategoryRoom();
     }, [])
 
+
     return (
         <>
             <div className="Room-container">
@@ -56,7 +56,7 @@ const TypesRoom = () => {
                             return (
                                 <div className="room-card" key={item._id}>
                                     <div className="room-img">
-                                        <img src={room} alt="" srcSet="" />
+                                        <img src={`http://localhost:3000/${item.room_image}`} alt="room image" title='room image' />
                                     </div>
                                     <div className="room-contents">
                                         <div className="room-discript">
