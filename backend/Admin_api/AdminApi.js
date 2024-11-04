@@ -15,7 +15,7 @@ const userModel = require('../UserModel/UserModel');
 
 
 
-// admin end point url - http://localhost:3000/admin/api/add-room-category
+// admin end point url - http://localhost:3000/admin/api/add-room
 
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNoQGdtYWlsLmNvbSIsImlhdCI6MTcyNzI3ODk3NSwiZXhwIjoxNzI3NDUxNzc1fQ.2wyLquF3nKJPId4jhm1iwKv_F64ebKwOqYA4n4W3aJ8
@@ -76,7 +76,7 @@ adminrouter.get(('/user-profile'), authProfileChecker, async (req, res) => {
 
 
 //API FOR ADD HOTEL FROM ADMIN 
-adminrouter.post(('/add-room'), tokenchecker, upload.single('room_image'), async (req, res) => {
+adminrouter.post(('/add-room'), upload.single('room_image'), async (req, res) => {
     try {
         const { room_number, room_category, room_description, room_price, total_beds, capacity } = req.body;
         const room_image = req.file.path;
