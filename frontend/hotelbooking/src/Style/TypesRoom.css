@@ -32,15 +32,15 @@
 }
 
 .Roomcard-container {
-   min-height: 400px;
-   width: 100%;
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-evenly;
-   align-content: space-evenly;
-}
 
-.room-card {
+   min-height:450px;
+  width: 100%;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  align-content: space-evenly;
+}
+.room-card{
    min-height: 240px;
    width: 45%;
    background-color: #f1f1f1;
@@ -49,6 +49,8 @@
    justify-content: space-evenly;
    border-radius: 8px;
    box-shadow: 0px 0px 4px #555;
+   margin-top:30px;
+   margin-bottom:30px;
 }
 
 .room-img {

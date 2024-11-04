@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react';
 import '../Style/Room_Detail.css';
 import { toast } from 'react-toastify';
 import { useParams, useNavigate } from 'react-router-dom';
+import { ThreeDots } from 'react-loader-spinner';
 
 
 
 const Room_Detail = () => {
+
+    const [loader, setLoader] = useState(false);
 
     let todayDateTime = new Date();
     let date = todayDateTime.toLocaleDateString();
@@ -23,7 +26,7 @@ const Room_Detail = () => {
     useEffect(() => {
 
         const getRoomById = async () => {
-
+            setLoader(true)
             try {
                 const res = await fetch(`http://localhost:3000/client/get-room/${id}`, {
                     method: "GET"
@@ -34,6 +37,7 @@ const Room_Detail = () => {
                     setRoom(roomDetail.Room);
 
                 }
+                setLoader(false)
             } catch (error) {
                 console.error('Error from get room by id', error);
             }
@@ -154,27 +158,37 @@ const Room_Detail = () => {
     return (
         <>
             <div className="room-details">
-                <div className="image-container">
-                    <img src={`http://localhost:3000/${room.room_image}`} className="room-image" alt={'room Image'} title={`Room number ${room.room_number}`} />
-                </div>
 
-                <div className="details-container">
-                    <h2 className="room-title">Room Number: {room.room_number}</h2> {room.room_booking_status === 'available' ? <span className='room-status'>({room.room_booking_status})</span> : <span className='room-status' style={{ color: "red" }}>({room.room_booking_status})</span>}
-                    <h3 className="room-category">{room.room_category}</h3>
-                    <p className="room-description">{room.room_description}</p>
-                    <p className="room-price">Price: <span>₹{price}</span> / night</p>
-                    <p className="room-beds">Total Beds: {room.total_beds}</p>
-                    <p className="room-capacity">Capacity: {room.capacity}</p>
+                {
 
-                    <div className="quantity-control">
-                        <button className="quantity-button" onClick={decreaseQuantity}>-</button>
-                        <span className="quantity">{quantity}</span>
-                        <button className="quantity-button" onClick={increaseQuantity}>+</button>
-                        <span className="add-room-text">Add Room(s): {quantity}</span>
-                    </div>
+                    loader ?    <div style={{margin:"100px auto"}}> <ThreeDots /> </div> : 
+                    <>
 
-                    <button className="book-now-button" onClick={bookNow}>Book Now</button>
-                </div>
+                        <div className="image-container">
+                            <img src={`http://localhost:3000/${room.room_image}`} className="room-image" alt={'room Image'} title={`Room number ${room.room_number}`} />
+                        </div>
+
+                        <div className="details-container">
+                            <h2 className="room-title">Room Number: {room.room_number}</h2> {room.room_booking_status === 'available' ? <span className='room-status'>({room.room_booking_status})</span> : <span className='room-status' style={{ color: "red" }}>({room.room_booking_status})</span>}
+                            <h3 className="room-category">{room.room_category}</h3>
+                            <p className="room-description">{room.room_description}</p>
+                            <p className="room-price">Price: <span>₹{price}</span> / night</p>
+                            <p className="room-beds">Total Beds: {room.total_beds}</p>
+                            <p className="room-capacity">Capacity: {room.capacity}</p>
+
+                            <div className="quantity-control">
+                                <button className="quantity-button" onClick={decreaseQuantity}>-</button>
+                                <span className="quantity">{quantity}</span>
+                                <button className="quantity-button" onClick={increaseQuantity}>+</button>
+                                <span className="add-room-text">Add Room(s): {quantity}</span>
+                            </div>
+
+                            <button className="book-now-button" onClick={bookNow}>Book Now</button>
+                        </div>
+                    </>
+                }
+
+
             </div>
         </>
     );

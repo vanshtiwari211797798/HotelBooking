@@ -5,7 +5,7 @@
 
 
 /* /--------------- registration form page start ---------------/ */
-.main-container{
+.main-containers{
     min-height: 400px;
     width: 100%;
     max-width: 800px;
@@ -128,7 +128,7 @@ select{
 }
 
 @media (max-width: 600px) {
-    .main-container{
+    .main-containers{
         width: 90%;
     }
     
