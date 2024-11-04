@@ -35,8 +35,8 @@ const Facility = () => {
                         </h3>
                         <h2>Fitness Center</h2>
                         <p>
-                            Equipped with exercise machines and weights.Offering massages,
-                            facials, and other treatments
+                        On-site security personnel and best surveillance. from standard to
+                            like luxury suites.
                         </p>
                     </div>
                     <div className="inner2-in2-in">
@@ -45,8 +45,8 @@ const Facility = () => {
                         </h3>
                         <h2>Swimming Pool</h2>
                         <p>
-                            Indoor or outdoor pools for leisure or exercise.Offering massages,
-                            facials, and other treatments
+                        On-site security personnel and best surveillance. from standard to
+                            like luxury suites.
                         </p>
                     </div>
                 </div>
