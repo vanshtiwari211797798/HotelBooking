@@ -86,7 +86,7 @@ const UpdateContact = () => {
 
 
   return (
-    <div className="main-container">
+    <div className="main-containers">
       <form onSubmit={handleUpdate}>
         <h2 className="reg-heading">UPDATE CONTACT</h2>
 

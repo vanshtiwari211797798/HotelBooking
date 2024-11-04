@@ -125,7 +125,7 @@ const Registration = () => {
 
   return (
     <>
-      <div className="main-container">
+      <div className="main-containers">
         <form onSubmit={handleSubmit} className='register_form'>
           <h2 className="reg-heading">REGISTRATION</h2>
 

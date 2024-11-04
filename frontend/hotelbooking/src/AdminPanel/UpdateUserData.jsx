@@ -86,7 +86,7 @@ const UpdateUserData = () => {
     },[])
 
   return (
-    <div className="main-container">
+    <div className="main-containers">
     <form onSubmit={handleSubmit}>
       <h2 className="reg-heading">UPDATE USER</h2>
 
