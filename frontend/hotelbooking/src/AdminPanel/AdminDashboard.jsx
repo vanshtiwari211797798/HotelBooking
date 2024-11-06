@@ -283,7 +283,7 @@ const AdminDashboard = () => {
             showAllenquires();
             showAllbooking();
         } else {
-            navigate('/')
+            navigate('/login')
         }
     }, [])
 
