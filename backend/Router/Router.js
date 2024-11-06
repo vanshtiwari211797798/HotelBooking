@@ -112,7 +112,12 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({ email }, Secret_Key);
         UserExist.token = token;
 
-        return res.status(200).json({ message: "User login successfully", token: token });
+        if(UserExist.role === 1){
+            return res.status(201).json({ message: "Admin login successfully", token: token });
+        }else{
+            return res.status(200).json({ message: "User login successfully", token: token });
+        }
+        
 
     } catch (error) {
         console.error('Error from Login User', error);
