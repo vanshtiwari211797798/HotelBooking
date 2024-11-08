@@ -81,7 +81,6 @@ const MyBooking = () => {
           <th>Image</th>
           <th>Room Number</th>
           <th>Category</th>
-          <th>Description</th>
           <th>Price</th>
           <th>Beds</th>
           <th>Capacity</th>
@@ -104,7 +103,6 @@ const MyBooking = () => {
             <td><img src={`http://localhost:3000/${item.room_image}`} alt="Room" className="myroom-image" /></td>
             <td>{item.room_number}</td>
             <td>{item.room_category}</td>
-            <td>{item.room_description}</td>
             <td>{item.room_price}</td>
             <td>{item.total_beds}</td>
             <td>{item.capacity}</td>
@@ -112,8 +110,8 @@ const MyBooking = () => {
             <td>{item.lname}</td>
             <td>{item.phone}</td>
             <td>{item.aadhar_number}</td>
-            <td>{item.check_in_date}</td>
-            <td>{item.check_out_date}</td>
+            <td>{item.booking_check_in_date.slice(0,10)}</td>
+            <td>{item.booking_check_out_date.slice(0,10)}</td>
             <td>{item.number_of_rooms}</td>
             <td>{item.booking_date}</td>
             <td>{item.booking_status}</td>

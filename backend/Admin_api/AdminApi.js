@@ -15,7 +15,7 @@ const userModel = require('../UserModel/UserModel');
 
 
 
-// admin end point url - http://localhost:3000/admin/api/add-room
+// admin end point url - http://localhost:3000/admin/api/approved-booking/
 
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNoQGdtYWlsLmNvbSIsImlhdCI6MTcyNzI3ODk3NSwiZXhwIjoxNzI3NDUxNzc1fQ.2wyLquF3nKJPId4jhm1iwKv_F64ebKwOqYA4n4W3aJ8
@@ -544,6 +544,25 @@ adminrouter.put(('/update-booking/:id'), tokenchecker, async (req, res) => {
     }
 })
 
+// Approved Booking
+adminrouter.put(('/approved-booking/:id'), async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        if(!id){
+            return res.status(400).json({msg:"Id not received from frontend"});
+        }
+
+        const booking = await roomBookingModel.findById(id);
+        if(booking){
+            booking.booking_status = 'Approved';
+            await booking.save();
+            return res.status(200).json({msg:"Booking Approved Successfully"});
+        }
+    } catch (error) {
+        console.error('error from approved booking', error);
+    }
+})
 
 // Delete Booking
 adminrouter.delete(('/delete-booking/:id'), tokenchecker, async (req, res) => {

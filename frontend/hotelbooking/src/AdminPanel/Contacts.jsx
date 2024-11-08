@@ -140,7 +140,7 @@ const Contacts = () => {
                                                 <tr className="tr">
                                                     <th className="th">Sr. No.</th>
                                                     <th className="th">Name</th>
-                                                    <th className="th">Phone No.</th>
+                                                
                                                     <th className="th">Email ID</th>
                                                     <th className="th">Message</th>
                                                     <th className="th">Update</th>
@@ -155,7 +155,7 @@ const Contacts = () => {
                                                             <tr className="tr" key={i}>
                                                                 <td className="td">{i + 1}</td>
                                                                 <td className="td">{item.name}</td>
-                                                                <td className="td">{item.phone}</td>
+                                                            
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.message}</td>
                                                                 <td className="td"><Link to={`/admin/update-contact/${item._id}`} className='Link'>Update</Link></td>

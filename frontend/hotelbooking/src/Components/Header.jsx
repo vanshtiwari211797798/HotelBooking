@@ -6,6 +6,27 @@ import { Link } from 'react-router-dom'
 const Header = () => {
 
   const auth = localStorage.getItem("usertoken")
+
+  $(document).ready(function(){
+    $(window).scroll(function(){
+        if ($(this).scrollTop()>50) {
+            $('.header').addClass('sticky');
+        } else {
+            $('.header').removeClass('sticky');
+        }
+    });
+});
+// ===============================
+function toggleNav() {
+    var extraNavbar = document.querySelector('.extra-navbar');
+    if (extraNavbar.style.display === "none" || extraNavbar.style.display === "") {
+        extraNavbar.style.display = "block";
+    } else {
+        extraNavbar.style.display = "none";
+        
+
+    }
+}
   
   return (
     <>
@@ -25,7 +46,7 @@ const Header = () => {
                   <Link to={"/gallery"}>Gallery</Link>
                 </li>
                 <li>
-                  <Link to={"/contact"}>Contact</Link>
+                  <Link to={"/contactus"}>Contact</Link>
                 </li>
                 <li>
                   <Link to={"/booking"}>Booking</Link>
@@ -36,7 +57,7 @@ const Header = () => {
               </ul>
             </div>
             {/* onClick="toggleNav" */}
-            <div className="toggle-btn" >
+            <div className="toggle-btn" onClick={toggleNav}>
               <i className="fa fa-bars" />
             </div>
           </header>

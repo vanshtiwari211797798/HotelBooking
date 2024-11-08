@@ -7,7 +7,7 @@ const AdminPvtComp = () => {
     const auth = localStorage.getItem('admintoken')
 
     
-    return auth ? <Outlet /> : <Navigate to={`/`} />
+    return auth ? <Outlet /> : <Navigate to={`/login`} />
 }
 
 export default AdminPvtComp

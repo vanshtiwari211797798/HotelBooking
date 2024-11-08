@@ -36,7 +36,11 @@ const Login = () => {
                 toast.success("Login Successfully")
                 setLogin({email:"",password:""});
                 navigate("/profile");
-                console.log('hello')
+            }else if(res.status === 201){
+                localStorage.setItem('admintoken',res.data.token)
+                toast.success("Login Successfully")
+                setLogin({email:"",password:""});
+                navigate("/admin/dashboard");
             }else{
                 toast.error("Somethings went wrong")
                 setLogin({email:"",password:""});
@@ -47,8 +51,7 @@ const Login = () => {
      
                 if(error.response.status === 400){
                     toast.error("All field is required")
-                }else{
-                    console.log(error.response.status)  
+                }else{  
                     toast.error("Invalid Creadential")
                     setLogin({email:"",password:""});
                     navigate("/");

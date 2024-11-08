@@ -25,6 +25,8 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import TypesRoom from './Components/TypesRoom'
 import AddCategory from './AdminPanel/AddCategory'
+import Contact from './Components/Contact'
+import GetSearchRoom from './Components/GetSearchRoom'
 
 
 // for Routing -> Pakage Name is react-router-dom
@@ -90,6 +92,22 @@ const router = createBrowserRouter([
     element: <div>
       <Header />
       <MyBooking />
+      <Footer />
+    </div>
+  },
+  {
+    path: '/search_rooms',
+    element: <div>
+      <Header />
+      <GetSearchRoom />
+      <Footer />
+    </div>
+  },
+  {
+    path: '/contactus',
+    element: <div>
+      <Header />
+      <Contact />
       <Footer />
     </div>
   },

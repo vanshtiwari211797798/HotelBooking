@@ -1,0 +1,210 @@
+.contact-main-container{
+    min-height: 700px;
+    max-width: 1000px;
+    width: 100%; 
+    background-color: #677c69;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #84dadf;
+    
+}
+
+.contact-address{
+    min-height: 450px;
+    max-width: 350px;
+    width: 100%; 
+    background-color: #002233;
+    position: absolute;
+    top: 160px;
+    left: 40px;
+    border-radius: 10px 10px 0px 0px;
+    padding-top: 40px;
+    /* padding-bottom: 40px; */
+}
+.contact-address:hover{
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+}
+
+.cont-heading{
+    font-size: 35px;
+    color: #ffffff;
+    font-weight: 100;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 2px;
+    /* padding-bottom: 15px;   */
+   
+}
+
+.cont-add-details{
+    display: flex;
+}
+.cont-add-details i{
+    font-size:20px;
+    color: #b6c2d0;
+    padding-left: 30px;
+    padding-top: 25px;
+}
+
+.cont-add-details h6{
+    font-size: 20px;
+    color: #b6c2d0;
+    padding-left: 28px;
+    padding-top: 20px;
+    font-weight: normal;
+}
+
+.cont-para{
+    padding-bottom: 10px;
+    padding-top: 7px;
+    padding-left: 78px;
+    padding-right: 20px;
+}
+.cont-para p{
+    font-size: 15px;
+    color: #b6c2d0; 
+    font-weight: normal;
+    font-family:sans-serif;  
+}
+
+
+
+/* --------------------- */
+.contact-form{
+    min-height: 600px;
+    max-width: 550px;
+    margin-right:80px ;
+    width: 100%; 
+    border-radius: 0px 0px 10px 10px ;
+    background-color:#fbfbff;
+    padding-top: 60px;    
+}
+
+.contact-form:hover{
+    box-shadow: 0 15px 15px rgba(0,0,0,0.3);
+}
+
+.contact-form-container{
+    width: 80%;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    margin-left: 80px; 
+}
+  
+.contact-header-box{
+      background: #002233;
+      padding-top: 20px; 
+      padding-bottom: 20px;
+      border-radius: 10px 10px 0px 0px;  
+}
+  
+.contact-log-header{
+      text-align: center;
+      font-size: 24px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      font-weight: 500;
+      letter-spacing: 2px;
+      color: white;
+      /* color: #002233; */
+}
+  
+.contact-input-box{
+      width: 100%;
+      margin-top: 25px;
+      margin-left: 20px;
+      position: relative;   
+}
+  
+.contact-log-lebel{
+    display: block;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #002233;
+}
+  
+.contact-icon{
+      font-size: 20px;    
+}
+.contact-input-box i{
+      position: absolute;
+      top: 35px;
+      left: 14px;
+      color: #002233;
+      border-right: 2px solid #cccccc;
+      padding: 6px;
+}
+  
+.contact-log-input{
+      width: 90%;
+      padding: 12px 12px 12px 2px;
+      border-radius: 20px;
+      margin-top: 3px;
+      font-size: 17px;
+      padding-left: 70px; 
+      resize:none;
+}
+  
+  
+.contact-button{
+     /* margin-left: 100px; */
+     text-align: center;
+     margin-top: 30px;
+     margin-bottom:30px ;
+}
+  
+.contact-login-button{
+      width: 50%;
+      padding: 13px 20px;
+      border-radius: 20px;
+      background: #002233;
+      border: none;
+      color: white;
+      cursor: pointer;
+}
+  
+.contact-login-button:hover{
+    cursor: pointer;
+    background-color: #45a049;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.contact-social-media{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background: #002233;
+    border-radius: 0px 0px 10px 10px;
+    
+}
+
+.contact-social-media i{
+    font-size: 25px;
+    padding-top: 12px;
+    margin-bottom: 12px;
+    align-items: center;
+    color: #ffffff;
+}
+
+.contact-social-media i:hover{
+    cursor: pointer;
+    /* background-color: #45a049; */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+@media (max-width:950px){
+    .contact-form{
+        max-width: unset;
+        margin-right: unset;
+        padding-right: 40px;
+    } 
+    .contact-address{
+        position: initial;
+        max-width: unset;   
+    }
+}
