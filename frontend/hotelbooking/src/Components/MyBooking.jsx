@@ -8,6 +8,7 @@ const MyBooking = () => {
   const navigate = useNavigate();
 
     const [MyBooking, setMyBooking] = useState([])
+    
 
 
     const getAllBooking =async () => {
@@ -110,8 +111,8 @@ const MyBooking = () => {
             <td>{item.lname}</td>
             <td>{item.phone}</td>
             <td>{item.aadhar_number}</td>
-            <td>{item.booking_check_in_date.slice(0,10)}</td>
-            <td>{item.booking_check_out_date.slice(0,10)}</td>
+            <td>{new Date(item.booking_check_in_date).toLocaleDateString()}</td>
+            <td>{new Date(item.booking_check_out_date).toLocaleDateString()}</td>
             <td>{item.number_of_rooms}</td>
             <td>{item.booking_date}</td>
             <td>{item.booking_status}</td>
