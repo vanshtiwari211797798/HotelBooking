@@ -7,6 +7,8 @@ const Header = () => {
 
   const auth = localStorage.getItem("usertoken")
 
+
+  // jQuery Code start
   $(document).ready(function(){
     $(window).scroll(function(){
         if ($(this).scrollTop()>50) {
@@ -27,6 +29,8 @@ function toggleNav() {
 
     }
 }
+
+// JQuery code end
   
   return (
     <>
