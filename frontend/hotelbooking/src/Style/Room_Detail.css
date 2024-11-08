@@ -99,6 +99,33 @@
 .book-now-button:hover {
     opacity: 0.9;
 }
+.date-inputs {
+    display: flex;
+    gap: 20px; /* Space between check-in and check-out fields */
+    margin: 15px 0;
+}
+
+.date-inputs label {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.date-inputs input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+    max-width: 180px; /* Adjust width as needed */
+}
+
+.date-inputs input[type="date"]:focus {
+    border-color: #ff5722;
+    outline: none;
+}
+
 
 /* Media query for smaller screens */
 @media (max-width: 768px) { /* Adjust for tablets and phones */

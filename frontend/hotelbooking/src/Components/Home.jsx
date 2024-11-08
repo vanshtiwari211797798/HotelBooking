@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../Style/Home.css'
 import author from '../Images/vansh.jpeg'
-import Rooms from './Rooms'
+import {toast} from 'react-toastify'
 import Facility from './Facility'
 import Category from './Category'
 
@@ -10,8 +10,65 @@ import Category from './Category'
 
 const Home = () => {
 
-  // useNavigate hook used for navigating the user to another page or link
+  
+  // useNavigate hook used for navigating the user to another page
   const navigate = useNavigate();
+
+  // state for room search
+  const [roomSearch, setRoomSearch] = useState({
+    booking_check_in_date:"",
+    booking_check_out_date:""
+  })
+
+  const [available_room, setavailablerooms] = useState([]);
+
+  // console.log('avail room is ',available_room)
+  // for handling room search
+  const handleChange = (e) => {
+    const name = e.target.name
+    const value = e.target.value
+
+    setRoomSearch({
+      ...roomSearch,
+      [name]:value
+    })
+  }
+
+
+  const handleSearchRoom = async (e) => {
+    e.preventDefault(); // Form submit ke time page reload ko rokna
+  
+    try {
+      if(roomSearch.booking_check_in_date && roomSearch.booking_check_out_date){
+      // roomSearch object ke data ko URL parameters mein convert karna
+      const { booking_check_in_date, booking_check_out_date } = roomSearch;
+      const queryParams = new URLSearchParams({
+        booking_check_in_date,
+        booking_check_out_date,
+      }).toString();
+  
+      const res = await fetch(`http://localhost:3000/client/get-available-rooms?${queryParams}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+  
+      if (res.status === 200) {
+        const finalRes = await res.json();
+        navigate('/search_rooms',{state:{data:finalRes.available_rooms}})
+        // console.log(available_room)
+      }
+    }else{
+      toast.info("Please fill dates")
+    }
+    } catch (error) {
+      console.error('Error from search room', error);
+    }
+  }
+  
+
+
 
   return (
     <>
@@ -40,11 +97,11 @@ const Home = () => {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="checkin">Check-in</label>
-                <input type="datetime-local" id="checkin" />
+                <input type="date" id="booking_check_in_date" name='booking_check_in_date' value={roomSearch.booking_check_in_date} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="checkout">Check-out</label>
-                <input type="datetime-local" id="checkout" />
+                <input type="date" id="booking_check_out_date" name='booking_check_out_date' value={roomSearch.booking_check_out_date} onChange={handleChange}/>
               </div>
             </div>
             {/* <div className="form-group">
@@ -57,7 +114,7 @@ const Home = () => {
                 <option value={4}>4 Adults</option>
               </select>
             </div> */}
-            <button className="search-btn">SEARCH</button>
+            <button className="search-btn" onClick={handleSearchRoom}>SEARCH</button>
           </div>
         </div>
         {/* hero section end */}
