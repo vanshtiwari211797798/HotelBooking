@@ -29,27 +29,14 @@ const MyProfile = multer.diskStorage({
     }
 })
 
+// uploading profile image during signup a user
 const upload = multer({ storage: MyProfile })
 
 
 
-// // for booking room image
-// const roomBooking = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//         return cb(null, './booking_rooms')
-//     },
-//     filename: function (req, file, cb) {
-//         // return cb(null, `${Date.now()}-${file.originalname}`);
-//         return cb(null, `${Date.now()} - ${file.originalname}`)
-//     }
-// })
-
-// const bookRoom = multer({ storage: roomBooking })
-
-
 // [CLIENT SIDE API]
 
-// user end point url - http://localhost:3000/client/get-types-room/:room_category_name
+// user end point url - http://localhost:3000/client/get-available-rooms
 
 //REGISTER API FOR REGISTER A NEW USER
 router.post(('/register'), upload.single('profile'), async (req, res) => {
@@ -112,12 +99,12 @@ router.post('/login', async (req, res) => {
         const token = jwt.sign({ email }, Secret_Key);
         UserExist.token = token;
 
-        if(UserExist.role === 1){
+        if (UserExist.role === 1) {
             return res.status(201).json({ message: "Admin login successfully", token: token });
-        }else{
+        } else {
             return res.status(200).json({ message: "User login successfully", token: token });
         }
-        
+
 
     } catch (error) {
         console.error('Error from Login User', error);
@@ -187,13 +174,13 @@ router.get(('/get-user-details/:id'), async (req, res) => {
 // API FOR CONTACT US PAGE
 router.post(('/contact-us'), async (req, res) => {
     try {
-        const { name, phone, email, message } = req.body;
+        const { name, email, message } = req.body;
 
-        if (!name || !phone || !email || !message) {
+        if (!name || !email || !message) {
             return res.status(400).json({ msg: "All field is require" });
         }
 
-        const contact = new ContactModel({ name, phone, email, message });
+        const contact = new ContactModel({ name, email, message });
         await contact.save();
         return res.status(201).json({ msg: "Contact Submtted Successfully" });
 
@@ -226,28 +213,76 @@ router.get(('/get-all-category'), async (req, res) => {
     try {
         const allCategory = await CategoryModel.find();
 
-        if(allCategory){
-            return res.status(200).json({category:allCategory});
+        if (allCategory) {
+            return res.status(200).json({ category: allCategory });
         }
     } catch (error) {
         console.error('error from get category client side', error);
     }
 })
 
+
+router.get('/get-available-rooms', async (req, res) => {
+    try {
+        const { booking_check_in_date, booking_check_out_date } = req.query;
+
+        // Date validation
+        if (!booking_check_in_date || !booking_check_out_date) {
+            return res.status(400).json({ msg: "Check-in and check-out dates not received" });
+        }
+
+        // Dates ko Date object mein convert karein
+        const checkIn = new Date(booking_check_in_date);
+        const checkOut = new Date(booking_check_out_date);
+
+        // Time normalization ko set karna taaki accurate comparison ho sake
+        checkIn.setHours(0, 0, 0, 0);  // Set check-in time to 00:00:00
+        checkOut.setHours(23, 59, 59, 999);  // Set check-out time to 23:59:59.999
+
+        // Step 1: Room ki booking check karna jo date range ke andar hai
+        const bookedRooms = await roomBookingModel.find({
+            $or: [
+                {
+                    booking_check_in_date: { $lt: checkOut }, // Existing booking ka check-in new check-out se pehle hai
+                    booking_check_out_date: { $gt: checkIn }  // Existing booking ka check-out new check-in ke baad hai
+                }
+            ]
+        }).distinct('room_number');  // Room numbers jo already booked hain
+
+        console.log('Booked Rooms:', bookedRooms);  // Debug log
+        // Room IDs jo already booked hain
+        // Step 2: Available rooms find karna jo booked rooms mein nahi hain
+        const availableRooms = await roomModel.find({
+            room_number: { $nin: bookedRooms }  // Jo rooms booked nahi hain, wo available hain
+        });
+
+        // Return available rooms
+        res.status(200).json({ available_rooms: availableRooms });
+    } catch (error) {
+        console.error('Error finding available rooms', error);
+        res.status(500).json({ msg: 'Server error' });
+    }
+});
+
+
+
+
+
 // show all rooms by category name - dilux / superdilux / luxery etc...
 router.get(('/get-types-room/:room_category_name'), async (req, res) => {
     try {
-        const {room_category_name} = req.params;
+        const { room_category_name } = req.params;
 
-        if(!room_category_name){
-            return res.status(400).json({msg:"Category room not received from parameter"});
+        if (!room_category_name) {
+            return res.status(400).json({ msg: "Category room not received from parameter" });
         }
-        
-        const category = await roomModel.find({
-            room_category:room_category_name});
 
-        if(category){
-            return res.status(200).json({category:category});
+        const category = await roomModel.find({
+            room_category: room_category_name
+        });
+
+        if (category) {
+            return res.status(200).json({ category: category });
         }
     } catch (error) {
         console.error('error from get category room', error);
@@ -274,7 +309,7 @@ router.get(('/get-room/:id'), async (req, res) => {
         const id = req.params.id;
 
         if (id) {
-            const room = await RoomsModel.findById(id) ||  await roomBookingModel.findById(id)
+            const room = await RoomsModel.findById(id) || await roomBookingModel.findById(id)
 
             if (room) {
                 return res.status(200).json({ Room: room })
@@ -287,54 +322,117 @@ router.get(('/get-room/:id'), async (req, res) => {
 
 
 // Room booking api for user
-
-router.post(('/book-room'), tokenchecker, async (req, res) => {
+router.post('/book-room', tokenchecker, async (req, res) => {
     try {
-        const { room_number, room_category, room_image, room_description, room_price, total_beds, capacity, fname, lname, email, phone, aadhar_number, number_of_rooms, booking_date } = req.body;
-        // const room_image = req.file.path;
+        const {
+            room_number,
+            room_category,
+            room_image,
+            room_description,
+            room_price,
+            total_beds,
+            capacity,
+            fname,
+            lname,
+            email,
+            phone,
+            aadhar_number,
+            number_of_rooms,
+            booking_date,
+            booking_check_in_date,
+            booking_check_out_date
+        } = req.body;
 
-        if (!room_number || !room_category || !room_image || !room_description || !room_price || !total_beds || !capacity || !fname || !email || !phone || !aadhar_number || !number_of_rooms || !booking_date) {
-
-            return res.status(400).json({ msg: "All fields is required" })
-
+        // Validate all required fields
+        if (!room_number || !room_category || !room_image || !room_description || !room_price || !total_beds || !capacity || !fname || !email || !phone || !aadhar_number || !number_of_rooms || !booking_date || !booking_check_in_date || !booking_check_out_date) {
+            return res.status(400).json({ msg: "All fields are required" });
         }
 
-        const Room = await RoomsModel.findOne({ room_number: room_number });
+        // Convert check-in and check-out dates to Date objects for comparison
+        const checkInDate = new Date(booking_check_in_date);
+        const checkOutDate = new Date(booking_check_out_date);
 
-        if (Room) {
+        // Normalize time to handle accurate comparisons
+        checkInDate.setHours(0, 0, 0, 0);  // Set check-in time to 00:00:00
+        checkOutDate.setHours(23, 59, 59, 999);  // Set check-out time to 23:59:59.999
 
-            const booking_Status = Room.room_booking_status;
+        // Check if the room is already booked within the given date range
+        const isRoomUnavailable = await roomBookingModel.findOne({
+            room_number: room_number,
+            $or: [
+                {
+                    booking_check_in_date: { $lt: checkOutDate },  // Existing booking check-in is before new check-out
+                    booking_check_out_date: { $gt: checkInDate }  // Existing booking check-out is after new check-in
+                }
+            ]
+        });
 
-            if (booking_Status === 'available') {
+        if (isRoomUnavailable) {
+            return res.status(401).json({ msg: "Room is unavailable on this date" });
+        }
 
-                const Booking = new roomBookingModel({ room_number, room_category,room_image, room_description, room_price, total_beds, capacity, fname, lname, email, phone, aadhar_number, number_of_rooms, booking_date });
+        // Find the room by its number to check its current booking status
+        const room = await roomModel.findOne({ room_number: room_number });
+
+        // Check if the room exists and its status is 'available'
+        if (room) {
+            if (room.room_booking_status === 'available') {
+                // Proceed to book the room if it's available
+                const Booking = new roomBookingModel({
+                    room_number,
+                    room_category,
+                    room_image,
+                    room_description,
+                    room_price,
+                    total_beds,
+                    capacity,
+                    fname,
+                    lname,
+                    email,
+                    phone,
+                    aadhar_number,
+                    number_of_rooms,
+                    booking_date,
+                    booking_check_in_date: checkInDate,
+                    booking_check_out_date: checkOutDate
+                });
+
+                // Save the booking to the database
                 await Booking.save();
-                Room.room_booking_status = 'unavailable'
-                await Room.save();
+
+                // Update the room's booking status to 'booked' after successful booking
+                await roomModel.updateOne({ room_number }, { $set: { room_booking_status: 'booked' } });
+
                 return res.status(201).json({ msg: "Room Booked Successfully" });
-
             } else {
-                return res.status(404).json({ msg: "Room is not available" })
+                return res.status(404).json({ msg: "Room is not available" });
             }
-
+        } else {
+            return res.status(404).json({ msg: "Room not found" });
         }
 
     } catch (error) {
-        console.error('Error from room booking user', error)
+        console.error('Error from room booking user', error);
+        res.status(500).json({ msg: "Internal server error" });
     }
-})
+});
+
+
+
+
+
 
 
 // api for get the bookings of user
-router.get(('/get-my-booking'),profileauth, async (req, res) => {
+router.get(('/get-my-booking'), profileauth, async (req, res) => {
     try {
         const userEmail = req.profile.email;
-        
-        if(!userEmail){
-            return res.status(400).json({msg:"email not get"})
+
+        if (!userEmail) {
+            return res.status(400).json({ msg: "email not get" })
         }
-        const myBooking = await roomBookingModel.find({email:userEmail});
-        return res.status(200).json({booking:myBooking});
+        const myBooking = await roomBookingModel.find({ email: userEmail });
+        return res.status(200).json({ booking: myBooking });
     } catch (error) {
         console.error('error from get user booking', error);
     }
@@ -346,16 +444,16 @@ router.put(('/cancel-booking/:id'), tokenchecker, async (req, res) => {
     try {
         const id = req.params.id;
         const booking = await roomBookingModel.findById(id);
-        const room = await roomModel.findOne({room_number:booking.room_number});
-        if(!booking){
-           return res.status(400).json({msg:"Room not found"});
+        const room = await roomModel.findOne({ room_number: booking.room_number });
+        if (!booking) {
+            return res.status(400).json({ msg: "Room not found" });
         }
         booking.booking_status = "Canceled";
         room.room_booking_status = 'available';
         await booking.save();
         await room.save();
-        return res.status(200).json({msg:"Room canceled successfully"});
-       
+        return res.status(200).json({ msg: "Room canceled successfully" });
+
 
     } catch (error) {
         console.error('error from delete booking', error);
@@ -385,15 +483,15 @@ router.get(('/get-room/:id'), async (req, res) => {
 // update the quantity of mybooking room
 router.put(('/update-view-room/:id'), tokenchecker, async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
 
-        if(!id){
-            return res.status(200).json({msg:"id not received from client side"})
+        if (!id) {
+            return res.status(200).json({ msg: "id not received from client side" })
         }
 
-        const updateViewRoom = await roomBookingModel.findByIdAndUpdate(id, req.body, {new:true});
-        if(updateViewRoom){
-            return res.status(200).json({msg:"Updated Successfully"}) 
+        const updateViewRoom = await roomBookingModel.findByIdAndUpdate(id, req.body, { new: true });
+        if (updateViewRoom) {
+            return res.status(200).json({ msg: "Updated Successfully" })
         }
 
     } catch (error) {
@@ -403,17 +501,17 @@ router.put(('/update-view-room/:id'), tokenchecker, async (req, res) => {
 
 
 
-router.get(('/origional-room-price/:roomno'),async (req, res) => {
+router.get(('/origional-room-price/:roomno'), async (req, res) => {
     try {
-        const {roomno} = req.params;
+        const { roomno } = req.params;
 
-        if(!roomno){
-            return res.status(400).json({msg:"Room number not received "});
+        if (!roomno) {
+            return res.status(400).json({ msg: "Room number not received " });
             console.log("room n no tr e")
         }
-        const roomPrice = await roomModel.findOne({room_number :roomno});
-        if(roomPrice){
-            return res.status(200).json({price:roomPrice.room_price})
+        const roomPrice = await roomModel.findOne({ room_number: roomno });
+        if (roomPrice) {
+            return res.status(200).json({ price: roomPrice.room_price })
         }
     } catch (error) {
         console.error('error from get origional room price', error);

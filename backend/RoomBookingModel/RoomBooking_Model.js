@@ -66,6 +66,14 @@ const roomBookingSchema = new mongoose.Schema({
         type:String,
         require:true
     },
+    booking_check_in_date:{
+        type:Date,
+        require:true
+    },
+    booking_check_out_date:{
+        type:Date,
+        require:true
+    },
     booking_status:{
         type:String,
         default:'Pending'
