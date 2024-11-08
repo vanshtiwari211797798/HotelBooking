@@ -23,6 +23,8 @@ function toggleNav() {
         extraNavbar.style.display = "block";
     } else {
         extraNavbar.style.display = "none";
+        
+
     }
 }
   
