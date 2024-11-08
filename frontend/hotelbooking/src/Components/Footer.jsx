@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// import '../Style/Home.css';
+// import '../Style/Home.css';a
 
 
 const Footer = () => {
@@ -27,31 +27,13 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/">
-                    <i className="fas fa-angle-right me-2" />
-                    Service
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
+                  <Link to="/about">
                     <i className="fas fa-angle-right me-2" />
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/">
-                    <i className="fas fa-angle-right me-2" />
-                    Testimonial
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
-                    <i className="fas fa-angle-right me-2" />
-                    Our Team
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/">
+                  <Link to="/contactus">
                     <i className="fas fa-angle-right me-2" />
                     Contact Us
                   </Link>
