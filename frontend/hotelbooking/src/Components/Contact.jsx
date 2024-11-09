@@ -48,7 +48,7 @@ const Contact = () => {
   return (
    
     <>
-  <div className="contact-main-container">
+  <div className="contact-main-container" data-aos="fade-right">
     <div className="contact-address">
       <h5 className="cont-heading">Contact Us</h5>
       <div className="cont-add-details">

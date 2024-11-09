@@ -3,13 +3,13 @@ import React from 'react'
 const Facility = () => {
     return (
         <>
-            <div className="inner2">
+            <div className="inner2" >
                 <div className="inner2-in1">
                     <h3>---: Facilities:---</h3>
                     <h2> Hotel Facilities</h2>
                 </div>
                 <div className="inner2-in2">
-                    <div className="inner2-in2-in">
+                    <div className="inner2-in2-in" data-aos="fade-right">
                         <h3>
                             <i className="fa-solid fa-hotel" />
                         </h3>
@@ -19,7 +19,7 @@ const Facility = () => {
                             essentials like beds
                         </p>
                     </div>
-                    <div className="inner2-in2-in">
+                    <div className="inner2-in2-in" data-aos="fade-right">
                         <h3>
                             <i className="fa-solid fa-bell-concierge" />
                         </h3>
@@ -29,7 +29,7 @@ const Facility = () => {
                             like luxury suites.
                         </p>
                     </div>
-                    <div className="inner2-in2-in">
+                    <div className="inner2-in2-in" data-aos="fade-right">
                         <h3>
                             <i className="fa-solid fa-person-running" />
                         </h3>
@@ -39,7 +39,7 @@ const Facility = () => {
                             like luxury suites.
                         </p>
                     </div>
-                    <div className="inner2-in2-in">
+                    <div className="inner2-in2-in" data-aos="fade-right">
                         <h3>
                             <i className="fa-solid fa-person-swimming" />
                         </h3>

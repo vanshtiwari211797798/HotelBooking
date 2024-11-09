@@ -54,7 +54,7 @@ const TypesRoom = () => {
                         getCategoryRooms.length > 0 ? 
                         getCategoryRooms.map((item) => {
                             return (
-                                <div className="room-card" key={item._id}>
+                                <div className="room-card" key={item._id} data-aos="fade-right">
                                     <div className="room-img">
                                         <img src={`http://localhost:3000/${item.room_image}`} alt="room image" title='room image' />
                                     </div>

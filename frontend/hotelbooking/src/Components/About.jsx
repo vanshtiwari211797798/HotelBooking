@@ -43,7 +43,7 @@ const About = () => {
         </div>
       </div>
       <div className="about-in-in">
-        <div className="flip-card">
+        <div className="flip-card" data-aos="zoom-in-down">
           <div className="flip-card-inner">
             <div className="flip-card-back">
               <h1 className="about-room">Deluxe Room</h1>
@@ -62,7 +62,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="flip-card">
+        <div className="flip-card" data-aos="zoom-in-down">
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <img
@@ -80,7 +80,7 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div className="flip-card">
+        <div className="flip-card" data-aos="zoom-in-down">
           <div className="flip-card-inner">
             <div className="flip-card-front">
               <img

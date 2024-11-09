@@ -112,7 +112,7 @@ const Home = () => {
         </div>
         {/* hero section end */}
         {/* about section start */}
-        <div className="inner1">
+        <div className="inner1" >
           <div className="inner1-in1" />
           <div className="inner1-in2">
             <h3>------: About Us :------</h3>

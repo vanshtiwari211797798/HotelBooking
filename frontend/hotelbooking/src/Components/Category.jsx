@@ -40,7 +40,7 @@ const Category = () => {
                     category.length > 0 ? 
                     category.map((item) => {
                         return (
-                            <div className="wrapper" key={item._id}>
+                            <div className="wrapper" key={item._id} data-aos="zoom-in">
                                 <h1>{item.room_category_name}</h1>
                                 <div className="image">
                                     <img src={`http://localhost:3000/${item.room_category_image}`} alt="delux room price" title='delux room' />
