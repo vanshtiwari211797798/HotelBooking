@@ -231,29 +231,27 @@ router.get('/get-available-rooms', async (req, res) => {
             return res.status(400).json({ msg: "Check-in and check-out dates not received" });
         }
 
-        // Dates ko Date object mein convert karein
+
         const checkIn = new Date(booking_check_in_date);
         const checkOut = new Date(booking_check_out_date);
 
-        // Time normalization ko set karna taaki accurate comparison ho sake
-        checkIn.setHours(0, 0, 0, 0);  // Set check-in time to 00:00:00
-        checkOut.setHours(23, 59, 59, 999);  // Set check-out time to 23:59:59.999
 
-        // Step 1: Room ki booking check karna jo date range ke andar hai
+        checkIn.setHours(0, 0, 0, 0);
+        checkOut.setHours(23, 59, 59, 999);
+
+
         const bookedRooms = await roomBookingModel.find({
             $or: [
                 {
-                    booking_check_in_date: { $lt: checkOut }, // Existing booking ka check-in new check-out se pehle hai
-                    booking_check_out_date: { $gt: checkIn }  // Existing booking ka check-out new check-in ke baad hai
+                    booking_check_in_date: { $lt: checkOut },
+                    booking_check_out_date: { $gt: checkIn }
                 }
             ]
-        }).distinct('room_number');  // Room numbers jo already booked hain
+        }).distinct('room_number');
 
-        console.log('Booked Rooms:', bookedRooms);  // Debug log
-        // Room IDs jo already booked hain
-        // Step 2: Available rooms find karna jo booked rooms mein nahi hain
+
         const availableRooms = await roomModel.find({
-            room_number: { $nin: bookedRooms }  // Jo rooms booked nahi hain, wo available hain
+            room_number: { $nin: bookedRooms }
         });
 
         // Return available rooms
@@ -352,17 +350,17 @@ router.post('/book-room', tokenchecker, async (req, res) => {
         const checkInDate = new Date(booking_check_in_date);
         const checkOutDate = new Date(booking_check_out_date);
 
-        // Normalize time to handle accurate comparisons
-        checkInDate.setHours(0, 0, 0, 0);  // Set check-in time to 00:00:00
-        checkOutDate.setHours(23, 59, 59, 999);  // Set check-out time to 23:59:59.999
+
+        checkInDate.setHours(0, 0, 0, 0);
+        checkOutDate.setHours(23, 59, 59, 999);
 
         // Check if the room is already booked within the given date range
         const isRoomUnavailable = await roomBookingModel.findOne({
             room_number: room_number,
             $or: [
                 {
-                    booking_check_in_date: { $lt: checkOutDate },  // Existing booking check-in is before new check-out
-                    booking_check_out_date: { $gt: checkInDate }  // Existing booking check-out is after new check-in
+                    booking_check_in_date: { $lt: checkOutDate },
+                    booking_check_out_date: { $gt: checkInDate }
                 }
             ]
         });

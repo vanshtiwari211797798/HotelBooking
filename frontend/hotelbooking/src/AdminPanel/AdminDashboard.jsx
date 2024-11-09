@@ -274,27 +274,6 @@ const AdminDashboard = () => {
     }
 
 
-   // Approved Booking
-   const ApprovedBooking = async (id, item) => {
-    try {
-        if(item.booking_status === 'Pending'){
-        const res = await fetch(`http://localhost:3000/admin/api/approved-booking/${id}`, {
-            method:"PUT"
-        })
-
-        if(res.status === 200){
-            toast.success('Booking Approved Successfully')
-        }
-    }else{
-        toast.error("Booking is allready Approved")
-    }
-    } catch (error) {
-        console.error('error from approved booking',error);
-    }
-}
-
-
-
     useEffect(() => {
         if (localStorage.getItem('admintoken')) {
             currentLogin();
@@ -642,11 +621,11 @@ const AdminDashboard = () => {
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
                                                                 <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
-                                                                <td className="td">{item.check_in_date}</td>
-                                                                <td className="td">{item.check_out_date}</td>
+                                                                <td className="td">{item.check_in_date === 'NA' ? item.check_in_date : new Date(item.check_in_date).toLocaleString()}</td>
+                                                                <td className="td">{item.check_out_date === 'NA' ? item.check_out_date : new Date(item.check_out_date).toLocaleString()}</td>
                                                                 <td className="td">{item.booking_date}</td>
                                                                 <td className="td">{item.booking_status}</td>
-                                                                <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => ApprovedBooking(item._id, item)}>Approved</button></td>
+                                                                <td className="td"><Link to={`/admin/update-booking/${item._id}`} className='Link'>Update</Link></td>
                                                                 <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => DeleteBooking(item._id)}>Delete</button></td>
                                                             </tr>
                                                         )

@@ -1,0 +1,99 @@
+/* Main form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin:40px auto;
+  }
+  
+  /* Form title */
+  .form-title {
+    color: #333;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ff6b6b;
+  }
+  
+  /* Update form styling */
+  .update-booking-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  /* Form group for two-column layout */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 48%; /* Two-column width */
+  }
+  
+  /* Single-column form group for larger items */
+  .form-group.full-width {
+    width: 100%;
+  }
+  
+  /* Form label */
+  .form-label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  /* Consistent styling for all input fields */
+  .form-input {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    height: 40px; /* Ensures height is consistent */
+    box-sizing: border-box; /* Ensures padding and border are included in width and height */
+    transition: border 0.3s ease;
+  }
+  
+  /* Focus state for input */
+  .form-input:focus {
+    border-color: #ff6b6b;
+    outline: none;
+  }
+  
+  /* Full-width button */
+  .form-button {
+    padding: 0.8rem;
+    background-color: #ff6b6b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    height: 40px; /* Match button height with input */
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .form-button:hover {
+    background-color: #ff4757;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .form-group {
+      width: 100%; /* Single-column on smaller screens */
+    }
+  
+    .form-input, .form-button {
+      height: 45px; /* Adjust input and button height on smaller screens for better touch */
+    }
+  }
+  

@@ -27,6 +27,7 @@ import TypesRoom from './Components/TypesRoom'
 import AddCategory from './AdminPanel/AddCategory'
 import Contact from './Components/Contact'
 import GetSearchRoom from './Components/GetSearchRoom'
+import UpdateBooking from './AdminPanel/UpdateBooking'
 
 
 // for Routing -> Pakage Name is react-router-dom
@@ -150,6 +151,10 @@ const router = createBrowserRouter([
   {
     path: '/admin/booking-table',
     element: <BookingTable />
+  },
+  {
+    path: '/admin/update-booking/:id',
+    element: <UpdateBooking />
   },
   {
     path: '/admin/update-user/:id',

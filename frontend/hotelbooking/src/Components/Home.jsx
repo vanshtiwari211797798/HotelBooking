@@ -15,23 +15,15 @@ const Home = () => {
   const navigate = useNavigate();
 
   // state for room search
-  const [roomSearch, setRoomSearch] = useState({
-    booking_check_in_date:"",
-    booking_check_out_date:""
-  })
+  const [booking_check_in_date, setbooking_check_in_date] = useState('');
+  const [booking_check_out_date, setbooking_check_out_date] = useState('');
 
-  const [available_room, setavailablerooms] = useState([]);
 
-  // console.log('avail room is ',available_room)
   // for handling room search
-  const handleChange = (e) => {
-    const name = e.target.name
-    const value = e.target.value
+  const handleDateChange = (e) => {
+    const selectedDate = e.target.value
+    setbooking_check_in_date(selectedDate);
 
-    setRoomSearch({
-      ...roomSearch,
-      [name]:value
-    })
   }
 
 
@@ -39,14 +31,15 @@ const Home = () => {
     e.preventDefault(); // Form submit ke time page reload ko rokna
   
     try {
-      if(roomSearch.booking_check_in_date && roomSearch.booking_check_out_date){
+      if(booking_check_in_date && booking_check_out_date){
       // roomSearch object ke data ko URL parameters mein convert karna
-      const { booking_check_in_date, booking_check_out_date } = roomSearch;
+      
       const queryParams = new URLSearchParams({
         booking_check_in_date,
         booking_check_out_date,
       }).toString();
-  
+
+
       const res = await fetch(`http://localhost:3000/client/get-available-rooms?${queryParams}`, {
         method: "GET",
         headers: {
@@ -97,11 +90,11 @@ const Home = () => {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="checkin">Check-in</label>
-                <input type="date" id="booking_check_in_date" name='booking_check_in_date' value={roomSearch.booking_check_in_date} onChange={handleChange} />
+                <input type="date" id="booking_check_in_date" name='booking_check_in_date' value={booking_check_in_date} onChange={handleDateChange} required/>
               </div>
               <div className="form-group">
                 <label htmlFor="checkout">Check-out</label>
-                <input type="date" id="booking_check_out_date" name='booking_check_out_date' value={roomSearch.booking_check_out_date} onChange={handleChange}/>
+                <input type="date" id="booking_check_out_date" name='booking_check_out_date' value={booking_check_out_date} onChange={(e) => setbooking_check_out_date(e.target.value)} min={booking_check_in_date} required/>
               </div>
             </div>
             {/* <div className="form-group">

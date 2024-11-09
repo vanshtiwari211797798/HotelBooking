@@ -15,7 +15,7 @@ const userModel = require('../UserModel/UserModel');
 
 
 
-// admin end point url - http://localhost:3000/admin/api/approved-booking/
+// admin end point url - http://localhost:3000/admin/api/update-booking
 
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNoQGdtYWlsLmNvbSIsImlhdCI6MTcyNzI3ODk3NSwiZXhwIjoxNzI3NDUxNzc1fQ.2wyLquF3nKJPId4jhm1iwKv_F64ebKwOqYA4n4W3aJ8
@@ -197,8 +197,8 @@ adminrouter.post(('/add-room-category'), uploadCategory.single('room_category_im
 adminrouter.get(('/get-category'), tokenchecker, async (req, res) => {
     try {
         const category = await CategoryModel.find();
-        if(category){
-            return res.status(200).json({category:category})
+        if (category) {
+            return res.status(200).json({ category: category })
         }
     } catch (error) {
         console.error("error from get all category in admin dashboard", error);
@@ -526,18 +526,38 @@ adminrouter.get(('/get-bookings'), tokenchecker, async (req, res) => {
     }
 })
 
+// get booking by id;
+adminrouter.get(('/get-booking/:id'), tokenchecker, async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        if(!id){
+            return res.status(400).json({msg:"Id not received from client side"});
+        }
+
+        const room = await roomBookingModel.findById(id);
+
+        if(room){
+            return res.status(200).json({room:room});
+        }
+
+        
+    } catch (error) {
+        console.error('error from get booking by id', error);
+    }
+})
+
 
 // Update Bookings
 adminrouter.put(('/update-booking/:id'), tokenchecker, async (req, res) => {
     try {
+        const { room_number, room_category, room_description, room_price, room_image, total_beds, capacity, fname, lname, email, phone, aadhar_number, check_in_date, check_out_date, booking_date, booking_check_in_date, booking_check_out_date, booking_status } = req.body;
         const id = req.params.id
 
         if (id) {
-            const updatedHotel = await roomBookingModel.findByIdAndUpdate(id);
-
-            if (updatedHotel) {
-                return res.status(200).json({ updated_hotel: updatedHotel });
-            }
+            const Id_Room = await roomBookingModel.findById(id);
+            const updatedRoom = await roomBookingModel.findByIdAndUpdate(id, {room_number, room_category, room_description, room_price, room_image : req.file ? req.file.path : Id_Room.room_image, total_beds, capacity, fname, lname, email, phone, aadhar_number, check_in_date, check_out_date, booking_date, booking_check_in_date, booking_check_out_date, booking_status}, {new:true});
+            return res.status(200).json({msg:"Room updated Successfully", date:updatedRoom});
         }
     } catch (error) {
         console.error('error from update booking', error);
@@ -547,17 +567,17 @@ adminrouter.put(('/update-booking/:id'), tokenchecker, async (req, res) => {
 // Approved Booking
 adminrouter.put(('/approved-booking/:id'), async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
 
-        if(!id){
-            return res.status(400).json({msg:"Id not received from frontend"});
+        if (!id) {
+            return res.status(400).json({ msg: "Id not received from frontend" });
         }
 
         const booking = await roomBookingModel.findById(id);
-        if(booking){
+        if (booking) {
             booking.booking_status = 'Approved';
             await booking.save();
-            return res.status(200).json({msg:"Booking Approved Successfully"});
+            return res.status(200).json({ msg: "Booking Approved Successfully" });
         }
     } catch (error) {
         console.error('error from approved booking', error);

@@ -169,8 +169,10 @@ const BookingTable = () => {
                                                     <th className="th">Email ID</th>
                                                     <th className="th">Aadhaar No.</th>
                                                     <th className="th">Room Image</th>
-                                                    <th className="th">CheckIn Date</th>
-                                                    <th className="th">CheckOut Date</th>
+                                                    <th className="th">Room CheckIn Date</th>
+                                                    <th className="th">Room CheckOut Date</th>
+                                                    <th className="th">User CheckIn Date</th>
+                                                    <th className="th">User CheckOut Date</th>
                                                     <th className="th">Room Bookig Status</th>
                                                     <th className="th">Update</th>
                                                     <th className="th">Remove</th>
@@ -194,10 +196,12 @@ const BookingTable = () => {
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
                                                                 <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
-                                                                <td className="td">{item.check_in_date}</td>
-                                                                <td className="td">{item.check_out_date}</td>
+                                                                <td className="td">{item.check_in_date === 'NA' ? item.check_in_date : new Date(item.check_in_date).toLocaleString()}</td>
+                                                                <td className="td">{item.check_out_date === 'NA' ? item.check_out_date : new Date(item.check_out_date).toLocaleString()}</td>
+                                                                <td className="td">{new Date(item.booking_check_in_date).toLocaleDateString()}</td>
+                                                                <td className="td">{new Date(item.booking_check_out_date).toLocaleDateString()}</td>
                                                                 <td className="td">{item.booking_status}</td>
-                                                                <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => ApprovedBooking(item._id, item)}>Approved</button></td>
+                                                                <td className="td"><Link to={`/admin/update-booking/${item._id}`} className='Link'>Update</Link></td>
                                                                 <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => DeleteBooking(item._id)}>Delete</button></td>
                                                             </tr>
                                                         )
