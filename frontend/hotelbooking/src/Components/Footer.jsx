@@ -44,7 +44,7 @@ const Footer = () => {
               <h2>Contact Info</h2>
               <ul>
                 <li>
-                  <Link to="/">
+                  <Link to="https://maps.app.goo.gl/2ER5FbBjeA94M1ce7">
                     <i className="fa fa-map-marker-alt me-2" />
                     Darshan Nagar, Ayodhya 224135 U.P.
                   </Link>
@@ -52,7 +52,7 @@ const Footer = () => {
                 <li>
                   <Link to="mailto:techsimahotel@gmail.com">
                     <i className="fas fa-envelope me-2" />
-                    techsimahotel@gmail.com
+                    techsimatraining@gmail.com
                   </Link>
                 </li>
                 <li>

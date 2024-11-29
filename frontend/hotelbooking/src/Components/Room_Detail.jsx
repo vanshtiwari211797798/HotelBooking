@@ -5,6 +5,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ThreeDots } from 'react-loader-spinner';
 
 const Room_Detail = () => {
+    const navigate = useNavigate();
+    const { id } = useParams();
+
+    
     const [loader, setLoader] = useState(false);
     const [room, setRoom] = useState('');
     const [quantity, setQuantity] = useState(1);
@@ -12,8 +16,7 @@ const Room_Detail = () => {
     const [booking_check_in_date, setbooking_check_in_date] = useState('');
     const [booking_check_out_date, setbooking_check_out_date] = useState('');
 
-    const navigate = useNavigate();
-    const { id } = useParams();
+   
 
     let todayDateTime = new Date();
     let date = todayDateTime.toLocaleDateString();
@@ -58,6 +61,14 @@ const Room_Detail = () => {
             myProfile();
         }
     }, [id]);
+
+
+    // booking check in date dandle change
+
+    const checkInDatehandleChange = (e) => {
+        const selectedCheckIndate = e.target.value
+        setbooking_check_in_date(selectedCheckIndate);
+    }
 
     const increaseQuantity = () => {
         if (quantity > 4) {
@@ -174,7 +185,7 @@ const Room_Detail = () => {
                                     <input
                                         type="date"
                                         value={booking_check_in_date}
-                                        onChange={(e) => setbooking_check_in_date(e.target.value)}
+                                        onChange={checkInDatehandleChange}
                                         name='booking_check_in_date'
                                     />
                                 </label>
@@ -185,6 +196,7 @@ const Room_Detail = () => {
                                         value={booking_check_out_date}
                                         onChange={(e) => setbooking_check_out_date(e.target.value)}
                                         name='booking_check_out_date'
+                                        min={booking_check_in_date}
                                     />
                                 </label>
                             </div>

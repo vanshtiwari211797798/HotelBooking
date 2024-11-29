@@ -109,22 +109,33 @@ select{
 
 .reg-link{
     background: #002233;
-    padding-bottom: 20px;
+    padding: 17px 0px;
     border-radius: 0px 0px 10px 10px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .reg-h5{
     text-align: center;
-    margin-top: 30px;
     font-size: 17px;
     font-weight: 400;
     color: #ffffff;
     letter-spacing: 2px;
 }
 
-.reg-link a{
+.reg-link .a{
     color: #ffffff;
     letter-spacing: 2px;
+}
+
+/* upload file */
+.fa-upload{
+    font-size:30px;
+    margin:10px 0px 0px 20px;
+    height:50px;
+    width:50px;
+    border-radius:50%;
 }
 
 @media (max-width: 600px) {

@@ -12,6 +12,13 @@ const Gallery = () => {
   const images = [
     { src: img1, title: "Swimming Pool.." },
     { src: img2, title: "Hall.." },
+    { src: img1, title: "Dining Table.." },
+    { src: img1, title: "Dining Table.." },
+    { src: img1, title: "Dining Table.." },
+    { src: img1, title: "Swimming Pool.." },
+    { src: img2, title: "Hall.." },
+    { src: img1, title: "Dining Table.." },
+    { src: img1, title: "Dining Table.." },
     { src: img1, title: "Dining Table.." }
   
   ];

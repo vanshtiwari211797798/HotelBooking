@@ -101,31 +101,7 @@ transition: ease-out;
 	padding: 38px;	
 	position: relative;
 }
-.butn button {
-	height: 40px;
-	width: 120px;
-	background-color: #eeeeee;
-	border-radius: 20px;
-	transition: ease-in-out;
-	transition-duration: 2s;
-	border-style: none;
-	font-size: 20px;
-	position: absolute;
-	right:130px;
-	top: 110px;
-	color: #002233;
-	transition: ease-in-out;
-  transition-duration: 2s;
-}
-.butn  a{
-	color:#002233;
-}
-.butn:hover button{
-  transition: ease-in-out;
-  transition-duration: 2s;
-  color:#134b70 ;
-  letter-spacing: 2px;
-}
+
 .profileForm{
 	min-height: 450px ;	
 	background-color:#eeeeee;

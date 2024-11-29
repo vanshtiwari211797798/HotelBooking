@@ -27,19 +27,21 @@
     justify-content: center; /* Center items vertically if needed */
     padding: 0; /* Remove padding */
     margin: 50px auto; /* Remove margin */
+    cursor:pointer;
   }
   
+
   .gallery {
-    margin: 0; /* Remove margin */
+    padding-bottom:32px;
     font-size: 2rem;
   }
   
   .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
+    gap: 25px;
     width: 100%; /* Make sure the grid takes full width */
-    max-width: 1200px; /* Optional: limit the maximum width */
+    max-width: 1300px; /* Optional: limit the maximum width */
   }
   
   .box {
@@ -98,7 +100,7 @@
   }
   
   .close {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
   }
   

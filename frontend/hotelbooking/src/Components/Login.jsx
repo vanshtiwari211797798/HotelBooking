@@ -44,7 +44,6 @@ const Login = () => {
             }else{
                 toast.error("Somethings went wrong")
                 setLogin({email:"",password:""});
-                navigate("/");
             }
         } catch (error) {
             if(error.response){
@@ -54,7 +53,6 @@ const Login = () => {
                 }else{  
                     toast.error("Invalid Creadential")
                     setLogin({email:"",password:""});
-                    navigate("/");
                 }
             }else{
                 toast.error("Internal Server Error")
@@ -71,68 +69,44 @@ const Login = () => {
     }, [])
     return (
         <>
+           <div className="login-container">
+      <h2 className="login-title">Login to continue.</h2>
+      <p className="login-subtitle">Enter your login credentials.</p>
+      <form className="login-form" onSubmit={handleLoginUser}>
+        <div className="input-group">
+          <label htmlFor="email" className="input-label">Email address</label>
+          <input
+            type="email"
+            id="email"
+            name='email'
+            onChange={handleChange}
+            className="input-field"
+            value={login.email}
+            placeholder="Enter email address"
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="password" className="input-label">Password</label>
+          <div className="password-group">
+            <input
+              type="password"
+              id="password"
+              onChange={handleChange}
+              value={login.password}
+              name='password'
+              className="input-field"
+              placeholder="Enter your password"
+            />
+            <Link to={`#`} className="forgot-link">Forgot?</Link>
+          </div>
+        </div>
+        <button type="submit" className="login-button">Login securely</button>
+      </form>
+      <p className="register-text">
+        Don't have an account? <Link to={`/signup`} className="register-link">Register for free</Link>
+      </p>
 
-            <>
-
-                <div className="login-main_container">
-                    <div className="login-form">
-                        <form onSubmit={handleLoginUser} className="login-form-container">
-                            <div className="login-header-box">
-                                <h2 className="log-header">LOGIN</h2>
-                            </div>
-                            <div className="login-welcome">
-                                <h1>Welcome Back!</h1>
-                                <p>USER LOGIN</p>
-                            </div>
-                            <div className="log-input-box">
-                                <label htmlFor="email" className="log-lebel">
-                                    E-mail
-                                </label>
-                                <i className="fa-solid fa-envelope icon" />
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={login.email}
-                                    onChange={handleChange}
-                                    className="log-input"
-                                    
-                                />
-                            </div>
-                            <div className="log-input-box">
-                                <label htmlFor="password" className="log-lebel">
-                                    Password
-                                </label>
-                                <i className="fa-solid fa-lock log-icon" />
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    value={login.password}
-                                    onChange={handleChange}
-                                    className="log-input"
-                                   
-                                />
-                            </div>
-                            {/* <div className="login-forget">
-                                <Link to="">Forget Password?</Link>
-                            </div> */}
-                            <div className="log-button">
-                                <button className="login-button">LOGIN</button>
-                            </div>
-                            <div className="reg-link">
-                                <p>
-
-                                    Don't Have an a Account? <Link to="/signup">Register Here</Link>
-                                </p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </>
-
-
-
+    </div>
         </>
 
     )

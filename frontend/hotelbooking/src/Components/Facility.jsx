@@ -5,7 +5,7 @@ const Facility = () => {
         <>
             <div className="inner2" >
                 <div className="inner2-in1">
-                    <h3>---: Facilities:---</h3>
+                    <h3>Facilities</h3>
                     <h2> Hotel Facilities</h2>
                 </div>
                 <div className="inner2-in2">
@@ -15,8 +15,8 @@ const Facility = () => {
                         </h3>
                         <h2>Rooms and Suites</h2>
                         <p>
-                            Varied types of rooms, from standard to luxury suites, equipped with
-                            essentials like beds
+                        On-site security personnel and best surveillance. from standard to
+                            like luxury suites.
                         </p>
                     </div>
                     <div className="inner2-in2-in" data-aos="fade-right">

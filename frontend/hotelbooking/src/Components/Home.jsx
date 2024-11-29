@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+// import Calendar from 'react-calendar';
 import '../Style/Home.css'
 import author from '../Images/vansh.jpeg'
 import {toast} from 'react-toastify'
 import Facility from './Facility'
 import Category from './Category'
+
 
 
 
@@ -70,7 +72,7 @@ const Home = () => {
         {/* hero section start */}
         <div className="h-hero">
           <div className="h-hero-content">
-            <span>---: Welcome to Our Hotel :---</span>
+            <span> Welcome to Our Hotel</span>
             <h1>Luxury Stay Hotel Experience Comfort &amp; Elegance</h1>
             <p>
               Choosing Bokinn was one of the best decisions we've ever made. They
@@ -115,7 +117,7 @@ const Home = () => {
         <div className="inner1" >
           <div className="inner1-in1" />
           <div className="inner1-in2">
-            <h3>------: About Us :------</h3>
+            <h3> About Us</h3>
             <h2>Welcome To Our Moonlit Hotel &amp; Resort</h2>
             <p>
               Welcome to Techsima Hotels, where luxury meets comfort in the heart of Ayodhya U.P.
@@ -139,7 +141,7 @@ const Home = () => {
       {/* Testimonial section start */}
       <div className="inner4">
         <div className="inner4-in1">
-          <h3>---: Testimonial :---</h3>
+          <h3>Testimonial</h3>
           <h2>What Our Client Say</h2>
         </div>
         <div className="inner4-in2">
@@ -182,7 +184,7 @@ const Home = () => {
       {/* offer section start */}
       <div className="inner6">
         <div className="inner6-in1">
-          <h3>-----: Special Offer :-----</h3>
+          <h3>Special Offer</h3>
           <h2>Special Offer</h2>
         </div>
         <div className="inner6-in2">
@@ -239,7 +241,7 @@ const Home = () => {
       {/* Instra section start */}
       <div className="inner7">
         <div className="inner7-in1">
-          <h3>-----: Instagram Post :-----</h3>
+          <h3>Instagram Post</h3>
           <h2>Follow on Instagram</h2>
         </div>
         <div className="inner7-in2">
@@ -270,7 +272,7 @@ const Home = () => {
           <input
             className="email"
             type="text"
-            placeholder="Enter Your Email"
+            placeholder="Enter your email"
             required=""
           />
           <input className="Subs" type="button" defaultValue="Subscribe" />

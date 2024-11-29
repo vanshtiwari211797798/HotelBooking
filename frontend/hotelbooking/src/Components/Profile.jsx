@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../Style/Profile.css'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import {BallTriangle} from 'react-loader-spinner'
 
@@ -111,7 +111,7 @@ const Profile = () => {
                             className="imge"
                             height="190px"
                             width="190px"
-                            title="Your profile"
+                            title="Your profile picture"
 
                         />
                     </div>
@@ -129,11 +129,7 @@ const Profile = () => {
                     >
                         {name ? `${name.fname}  ${name.lname}` : 'WELCOME'}
                     </p>
-                    <div className="butn">
-                        <button className="back">
-                            <Link to={`/`} className='Link'>Back</Link>
-                        </button>
-                    </div>
+
                     <div className="profileForm2">
                         <address style={{ color: "#eeeeee" }}>
                             <img

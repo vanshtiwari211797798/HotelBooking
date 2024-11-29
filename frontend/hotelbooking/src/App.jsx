@@ -28,6 +28,8 @@ import AddCategory from './AdminPanel/AddCategory'
 import Contact from './Components/Contact'
 import GetSearchRoom from './Components/GetSearchRoom'
 import UpdateBooking from './AdminPanel/UpdateBooking'
+import 'react-calendar/dist/Calendar.css';
+
 
 
 // for Routing -> Pakage Name is react-router-dom
@@ -196,7 +198,7 @@ const App = () => {
 
   return (
     <>
-    {/* You can add jQuery code here */}
+    {/* if you want then you can add jQuery code here */}
       <RouterProvider router={router} />
     </>
   )
