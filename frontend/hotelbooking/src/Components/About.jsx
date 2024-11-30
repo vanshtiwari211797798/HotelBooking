@@ -72,7 +72,7 @@ const About = () => {
               />
             </div>
             <div className="flip-card-back">
-              <h1 className="about-room">Luxuery Room</h1>
+              <h1 className="about-room">Luxery Room</h1>
               <p className="room-content">
                 Any enclosed space within a number of walls to which entry is
                 possible only via a door or other dividing structure

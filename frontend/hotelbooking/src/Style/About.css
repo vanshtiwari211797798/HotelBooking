@@ -31,10 +31,10 @@
     padding: 20px;
 }
 .video-content{
-    font-size: 25px;
+    font-size: 18px;
     font-weight: 700;
     padding-top: 60px;
-    font-family: Bradley Hand ITC;
+    text-align: justify;
     opacity: 1.1;
 }
 /* video page end */
@@ -43,7 +43,7 @@
     min-height: 500px;
     width: 100%;
     padding: 40px;
-    background-color: #002244;
+    background-color: #f1f1f1;
 }
 .about-in {
     min-height: 500px;
@@ -76,26 +76,27 @@
 .about-content h2 {
     font-size: 40px;
     margin-bottom: 15px;
-    color: #fff;
+    color: #000;
 }
 .about-content p {
     font-size: 16px;
     margin-bottom: 15px;
-    color: #fff;
+    color: #000;
 }
 .learn-more {
     height: 50px;
     width: 150px;
     padding: 10px 20px;
     font-size: 20px;
-    background-color: #2a5b91;
+    background-color: #ffb700;
     color: white;
     border-radius: 5px;
     transition: 0.3s;
+    border: transparent;
 }
 .learn-more:hover {
-    background:#002233;
     cursor: pointer;
+    border: 2px dashed;
     box-shadow: 0px 0px 25px rgba(239, 232, 232, 0.9);
 }
 .about-in-in{
@@ -113,6 +114,7 @@
     width: 300px;
     min-height: 300px;
     perspective: 1000px;
+    cursor: pointer;
     
   }
   
@@ -156,7 +158,7 @@
     padding-top: 5px;
   }
   .room-content{
-    font-size: 25px;
+    font-size: 20px;
     padding-top: 15px;
     padding-left: 10px;
     padding-right: 10px;

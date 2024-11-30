@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { json, Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // import Calendar from 'react-calendar';
 import '../Style/Home.css'
-import author from '../Images/vansh.jpeg'
+import author from '../Images/user.jpg'
 import {toast} from 'react-toastify'
 import Facility from './Facility'
 import Category from './Category'
@@ -193,8 +193,7 @@ const Home = () => {
               tackle new challenges with and expertise.Their commitment to and
               delivering tailored.
             </p>
-            <h3>Mr. Sudhakar Maurya</h3>
-            <h4>Founder of Tech-Hotel</h4>
+            
           </div>
         </div>
       </div>
