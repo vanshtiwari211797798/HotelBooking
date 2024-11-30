@@ -9,7 +9,6 @@
 .sec3{
 	min-height:600px;
 	width:100%;
-	border: 2px solid green;
 	padding: 10px;
 	display: flex;
 	align-items:center;
@@ -29,8 +28,10 @@
 	
 }
 .profileData{
-	height: 549px ;
+	height: 549px;
 	width: 45%;	
+	position: relative;
+	margin: 50px 0px;
 	
 }
 @media (max-width:1024px){
@@ -106,7 +107,7 @@ transition: ease-out;
 	min-height: 450px ;	
 	background-color:#eeeeee;
 	margin-bottom:10px;
-	padding: 40px;
+	padding: 30px 40px 40px 40px;
 }
 .proform11{
 	min-height: 375px ;	
@@ -172,7 +173,7 @@ transition: ease-out;
 #save{
 	height: 43px;
 	width: 120px;
-	background-color:#002233;
+	background-color:#ffb700;
 	border-radius: 30px;
 	transition: ease-in-out;
 	transition-duration: 2s;

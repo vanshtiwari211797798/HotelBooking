@@ -63,8 +63,8 @@
 }
 
 .quantity-button {
-    background-color: #007BFF; /* Blue */
-    color: #FFFFFF; /* White */
+    background-color: #ffb700; 
+    color: #FFFFFF; 
     border: none;
     border-radius: 4px;
     padding: 5px 10px;
@@ -85,8 +85,8 @@
 }
 
 .book-now-button {
-    width:20%;
-    background-color: #FF5733; /* Orange-red */
+    width:18%;
+    background-color: #ffb700; /* Orange-red */
     color: #FFFFFF; /* White */
     border: none;
     border-radius: 4px;

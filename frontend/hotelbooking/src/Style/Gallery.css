@@ -35,7 +35,11 @@
     padding-bottom:32px;
     font-size: 2rem;
   }
-  
+
+  .fa-solid{
+    display: none;
+  }
+
   .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));

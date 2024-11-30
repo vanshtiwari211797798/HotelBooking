@@ -102,7 +102,7 @@ const Profile = () => {
        {
             MYprofile.fname ? 
             <section className="sec3">
-            <div className=" profilePic">
+            {/* <div className=" profilePic">
                 <div className="profileImg">
                     <div className="imgDiv" style={{ background: "#002233" }}>
                         <img
@@ -144,11 +144,12 @@ const Profile = () => {
                         </address>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="profileData">
                 <div className="profileForm">
                     <div className="proform11">
-                        <h3>My Profile</h3>
+                    <img src={`http://localhost:3000/${MYprofile.profile}`} alt="" style={{height:"70px", width:"70px", borderRadius:"50%", display:"block", margin:"0px auto"}} />
+                        {/* <h6>My Profile</h6> */}
                         <form onSubmit={hanldeSubmit}>
                             <label htmlFor="fname">First Name </label>
                             <input type="text" name="fname" id="fname" value={MYprofile.fname} onChange={handleChange} />

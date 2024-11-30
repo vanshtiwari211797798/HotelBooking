@@ -72,9 +72,12 @@ const MyBooking = () => {
   return (
     <>
 
-   {
-    MyBooking.length > 0 ? 
+   
+   
     <div className="table-container">
+      {
+        MyBooking.length > 0 ? 
+      
     <table className="booking-table">
       <thead>
         <tr>
@@ -124,10 +127,11 @@ const MyBooking = () => {
         ))}
       </tbody>
     </table>
+    :
+    <h3 style={{textAlign:"center"}}>No Booking Record Found</h3>
+}
   </div>
-  :
-  <h3>NOT ROOM BOOK YET</h3>
-   }
+
 
 
     </>

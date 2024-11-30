@@ -21,12 +21,6 @@ const Footer = () => {
               <h2>Explore</h2>
               <ul>
                 <li>
-                  <Link to="/">
-                    <i className="fas fa-angle-right me-2" />
-                    Home
-                  </Link>
-                </li>
-                <li>
                   <Link to="/about">
                     <i className="fas fa-angle-right me-2" />
                     About Us
@@ -46,7 +40,7 @@ const Footer = () => {
                 <li>
                   <Link to="https://maps.app.goo.gl/2ER5FbBjeA94M1ce7">
                     <i className="fa fa-map-marker-alt me-2" />
-                    Darshan Nagar, Ayodhya 224135 U.P.
+                    Darshan Nagar, Ayodhya U.P
                   </Link>
                 </li>
                 <li>

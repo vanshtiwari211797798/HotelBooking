@@ -1,8 +1,8 @@
 .table-container {
+  min-height: 400px;
     overflow-x: auto; /* Enable horizontal scroll */
     margin: 50px 0;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background: white;
   }
   
@@ -20,8 +20,8 @@
   }
   
   .booking-table th {
-    background-color: #007bff;
-    color: white;
+    background-color: #fdd97e;
+    color: #000;
     font-weight: bold;
   }
   

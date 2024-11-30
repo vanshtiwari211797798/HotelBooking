@@ -13,6 +13,7 @@ const CategoryModel = require('../RommCategoryModel/RoomCategory');
 const tokenchecker = require('../Auth/TokenChecker')
 const profileauth = require('../Auth/profileauth')
 const multer = require('multer');
+const subsCribe_model = require('../Subscribe_model/SubsCribe')
 const roomModel = require('../RoomsModel/RoomsHotelsModel');
 
 
@@ -36,7 +37,7 @@ const upload = multer({ storage: MyProfile })
 
 // [CLIENT SIDE API]
 
-// user end point url - http://localhost:3000/client/get-available-rooms
+// user end point url - http://localhost:3000/client/subscribe-now
 
 //REGISTER API FOR REGISTER A NEW USER
 router.post(('/register'), upload.single('profile'), async (req, res) => {
@@ -505,7 +506,6 @@ router.get(('/origional-room-price/:roomno'), async (req, res) => {
 
         if (!roomno) {
             return res.status(400).json({ msg: "Room number not received " });
-            console.log("room n no tr e")
         }
         const roomPrice = await roomModel.findOne({ room_number: roomno });
         if (roomPrice) {
@@ -515,4 +515,25 @@ router.get(('/origional-room-price/:roomno'), async (req, res) => {
         console.error('error from get origional room price', error);
     }
 })
+
+
+// api for subscribe website who wants to get new recentle
+
+router.post(('/subscribe-now'),async (req, res) => {
+    try {
+        const {email} = req.body;
+        if(!email){
+            return res.status(400).json({msg:"email not received, email is required"});
+        }
+
+        // if email received from req.body
+        const subs_Schema = new subsCribe_model({email});
+        await subs_Schema.save();
+        return res.status(201).json({msg:"Subscribe Successfully, thank you"});
+    } catch (error) {
+        console.error('error from subscribe model', error);
+    }
+})
+
+
 module.exports = router;

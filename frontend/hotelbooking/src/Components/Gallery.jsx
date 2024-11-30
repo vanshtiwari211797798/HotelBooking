@@ -8,18 +8,18 @@ import vdo from '../Images/tech4.mp4'
 
 
 const Gallery = () => {
-  // Dynamic image data
+  
   const images = [
-    { src: img1, title: "Swimming Pool.." },
-    { src: img2, title: "Hall.." },
-    { src: img1, title: "Dining Table.." },
-    { src: img1, title: "Dining Table.." },
-    { src: img1, title: "Dining Table.." },
-    { src: img1, title: "Swimming Pool.." },
-    { src: img2, title: "Hall.." },
-    { src: img1, title: "Dining Table.." },
-    { src: img1, title: "Dining Table.." },
-    { src: img1, title: "Dining Table.." }
+    { src: img1, title: "Luxery Room" },
+    { src: img2, title: "Simple Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img2, title: "Simple Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img1, title: "Luxery Room" },
+    { src: img1, title: "Luxery Room" }
   
   ];
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { json, Link, useNavigate } from 'react-router-dom'
 // import Calendar from 'react-calendar';
 import '../Style/Home.css'
 import author from '../Images/vansh.jpeg'
@@ -20,6 +20,37 @@ const Home = () => {
   const [booking_check_in_date, setbooking_check_in_date] = useState('');
   const [booking_check_out_date, setbooking_check_out_date] = useState('');
 
+  // for subscribe email state
+  const [subscribe, setSubsCribe] = useState('');
+
+  // subscribe website api fetch
+  const subsCribeNow = async () => {
+    try {
+      if(subscribe){
+        const res = await fetch(`http://localhost:3000/client/subscribe-now`,{
+          method:"POST",
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({email:subscribe})
+        })
+
+        if(res.status === 201){
+          toast.success("Subscribe successfully, thank you")
+        }else if(res.status === 400){
+          toast.info("Email is required");
+        }else{
+          toast.error("Internal server error");
+        }
+      }else{
+        toast.error("Please enter email");
+      }
+    } catch (error) {
+      console.error('error from subscribe website', error);   
+    }
+  }
+
+  
 
   // for handling room search
   const handleDateChange = (e) => {
@@ -271,11 +302,14 @@ const Home = () => {
         <div className="inner8-in2">
           <input
             className="email"
-            type="text"
+            type="email"
+            name='email'
             placeholder="Enter your email"
-            required=""
+            value={subscribe}
+            onChange={(e) => setSubsCribe(e.target.value)}
+            
           />
-          <input className="Subs" type="button" defaultValue="Subscribe" />
+          <input className="Subs" type="button" defaultValue="Subscribe" onClick={subsCribeNow}/>
         </div>
       </div>
       {/* Newsletter section end */}

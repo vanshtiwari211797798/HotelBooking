@@ -27,11 +27,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    transition: all ease-in-out 1s;
     background:#f1f1f1;
-}
-.header:hover {
-    background-color: #c0eef2;
 }
 .header .logo {
     height: 100%;
@@ -42,13 +38,14 @@
 }
 .logo span {
     font-size: 50px;
-    color: #497174;
+    color: #093838;
      text-transform: uppercase;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor:pointer;
     letter-spacing: 2px;
 }
  .logo span:hover {
-    color: #002244;
+    color: #ffb700;
     transition: all ease-in-out 1s;
 }
 .header .navbar {
@@ -70,10 +67,10 @@
     font-weight: bold;
     text-transform: uppercase;
     text-decoration: none;
-    color: #497174;
+    color: #093838;
 }
 .navbar ul li a:hover {
-    color: #093838;
+    color: #ffb700;
 }
 .toggle-btn{
     height: 100px;
@@ -187,7 +184,7 @@
   }
   .search-btn {
     width: 15%;
-    background-color: #fdd97e;
+    background-color: #ffb700;
     color: #000;
     padding: 15px;
     margin-top:18px ;
@@ -299,7 +296,7 @@
     font-size:20px;
     cursor:pointer;
     border:transparent;
-    background-color: #fdd97e;
+    background-color: #ffb700;
     border-radius: 10px;
     color: #000;
     margin-top: 10px;
@@ -481,7 +478,7 @@
     color: #000;
     font-size: 20px;
     padding: 8px;
-    background-color: #fdd97e;
+    background-color: #ffb700;
   }
   .image{
     position: relative;
@@ -933,7 +930,8 @@
     font-size: 15px;
     border:none;
     cursor:pointer;
-    background-color: #fdd97e;
+    color: #fff;
+    background-color: #ffb700;
 }
 /* Newsletter section end */
 /* Footer section start */
