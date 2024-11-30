@@ -66,7 +66,7 @@
     height: 350px;
     width: 350px;
     border-radius: 50%;
-    box-shadow: 8px 8px 18px rgba(142, 135, 135, 0.9);
+    cursor: pointer;
 }
 .about-content {
     height: 400px;
@@ -85,9 +85,9 @@
 }
 .learn-more {
     height: 50px;
-    width: 150px;
+    width: 145px;
     padding: 10px 20px;
-    font-size: 20px;
+    font-size: 18px;
     background-color: #ffb700;
     color: white;
     border-radius: 5px;
