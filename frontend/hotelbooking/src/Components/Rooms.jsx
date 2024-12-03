@@ -16,18 +16,18 @@ const Rooms = () => {
             if (res.status === 200) {
                 const AllRooms = await res.json();
                 if (AllRooms.Room) {
-                    setRooms(AllRooms.Room); // Set rooms if found
+                    setRooms(AllRooms.Room); 
                 } else {
-                    setError('No rooms found'); // Error if no rooms
+                    setError('No rooms found'); 
                 }
             } else {
-                setError('Failed to fetch rooms'); // Error for other status codes
+                setError('Failed to fetch rooms'); 
             }
         } catch (error) {
             console.error('Error from getRoom:', error);
-            setError('Error fetching rooms'); // Error for fetch issues
+            setError('Error fetching rooms'); 
         } finally {
-            setLoading(false); // Set loading to false at the end
+            setLoading(false); 
         }
     };
 

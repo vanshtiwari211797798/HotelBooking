@@ -29,6 +29,7 @@ import Contact from './Components/Contact'
 import GetSearchRoom from './Components/GetSearchRoom'
 import UpdateBooking from './AdminPanel/UpdateBooking'
 import 'react-calendar/dist/Calendar.css';
+import ForgetPassword from './Components/ForgetPassword'
 
 
 
@@ -71,6 +72,14 @@ const router = createBrowserRouter([
     element: <div>
       <Header />
       <Login />
+      <Footer />
+    </div>
+  },
+  {
+    path: '/forget-password',
+    element: <div>
+      <Header />
+      <ForgetPassword />
       <Footer />
     </div>
   },
@@ -198,7 +207,6 @@ const App = () => {
 
   return (
     <>
-    {/* if you want then you can add jQuery code here */}
       <RouterProvider router={router} />
     </>
   )

@@ -10,7 +10,6 @@
   .animation {
     position: relative;
     width: 100%;
-    height: 70vh; /* Increased height for better visibility */
     overflow: hidden;
   }
   
@@ -37,7 +36,7 @@
   }
 
   .fa-solid{
-    display: none;
+    display: block;
   }
 
   .box-container {

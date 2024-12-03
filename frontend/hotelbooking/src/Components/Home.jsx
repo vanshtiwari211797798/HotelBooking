@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-// import Calendar from 'react-calendar';
 import '../Style/Home.css'
 import author from '../Images/user.jpg'
 import {toast} from 'react-toastify'
@@ -13,7 +12,6 @@ import Category from './Category'
 const Home = () => {
 
   
-  // useNavigate hook used for navigating the user to another page
   const navigate = useNavigate();
 
   // state for room search
@@ -37,10 +35,12 @@ const Home = () => {
 
         if(res.status === 201){
           toast.success("Subscribe successfully, thank you")
+          setSubsCribe("")
         }else if(res.status === 400){
           toast.info("Email is required");
         }else{
           toast.error("Internal server error");
+          setSubsCribe("")
         }
       }else{
         toast.error("Please enter email");
@@ -61,11 +61,11 @@ const Home = () => {
 
 
   const handleSearchRoom = async (e) => {
-    e.preventDefault(); // Form submit ke time page reload ko rokna
+    e.preventDefault(); 
   
     try {
       if(booking_check_in_date && booking_check_out_date){
-      // roomSearch object ke data ko URL parameters mein convert karna
+      // roomSearch object convert to url paramiter
       
       const queryParams = new URLSearchParams({
         booking_check_in_date,
@@ -83,7 +83,6 @@ const Home = () => {
       if (res.status === 200) {
         const finalRes = await res.json();
         navigate('/search_rooms',{state:{data:finalRes.available_rooms}})
-        // console.log(available_room)
       }
     }else{
       toast.info("Please fill dates")
@@ -177,9 +176,15 @@ const Home = () => {
         </div>
         <div className="inner4-in2">
           <div className="inner4-in2-in1">
-            <img src={author} alt="auth" title='author' />
+            <img src={author} alt="client" title='Client' />
           </div>
           <div className="inner4-in2-in2">
+            <p>
+              Choosing Bokinn was one of the best decisions we've ever made. They
+              have proven to be a reliable and innovative partner, always ready to
+              tackle new challenges with and expertise.Their commitment to and
+              delivering tailored.
+            </p>
             <h2>
               <i className="fa-solid fa-star" />
               <i className="fa-solid fa-star" />
@@ -187,13 +192,6 @@ const Home = () => {
               <i className="fa-solid fa-star" />
               <i className="fa-solid fa-star-half-stroke" />
             </h2>
-            <p>
-              Choosing Bokinn was one of the best decisions we've ever made. They
-              have proven to be a reliable and innovative partner, always ready to
-              tackle new challenges with and expertise.Their commitment to and
-              delivering tailored.
-            </p>
-            
           </div>
         </div>
       </div>
@@ -204,7 +202,7 @@ const Home = () => {
           <div className="inner5-round">
             <div className="inner5-trian">
               <Link to="https://youtu.be/sfczxZvp2c4?si=Qm5fhOk_tvEs_e16">
-                <i className="fa-solid fa-play" />
+              <i class="fa fa-play" aria-hidden="true"></i>
               </Link>
             </div>
           </div>

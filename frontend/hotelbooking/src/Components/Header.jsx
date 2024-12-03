@@ -9,15 +9,16 @@ const Header = () => {
 
 
   // jQuery Code start
-  $(document).ready(function(){
-    $(window).scroll(function(){
-        if ($(this).scrollTop()>50) {
-            $('.header').addClass('sticky');
-        } else {
-            $('.header').removeClass('sticky');
-        }
-    });
-});
+//   $(document).ready(function(){
+//     $(window).scroll(function(){
+//         if ($(this).scrollTop()>50) {
+//             $('.header').addClass('sticky');
+//         } else {
+//             $('.header').removeClass('sticky');
+//         }
+//     });
+// });
+
 // ===============================
 function toggleNav() {
     var extraNavbar = document.querySelector('.extra-navbar');

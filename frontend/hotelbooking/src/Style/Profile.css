@@ -19,14 +19,6 @@
 .Link{
     text-decoration: none;
 }
-.profilePic{
-	height: 550px ;
-	width: 29%;
-	background-color: #002233;
-	border: 2px double black;
-	
-	
-}
 .profileData{
 	height: 549px;
 	width: 45%;	
@@ -35,11 +27,6 @@
 	
 }
 @media (max-width:1024px){
-	.profilePic{
-		width: 45%
-		
-		
-	}
 	.profileData{
 
 		width: 45%;	
@@ -47,10 +34,6 @@
 }
 
 @media (max-width:768px){
-	.profilePic{
-		width: 98%
-		
-	}
 	.profileData{
 		
 		width: 98%;	

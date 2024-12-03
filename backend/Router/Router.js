@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const nodemailer = require('nodemailer');
 const userModel = require('../UserModel/UserModel');
 const bcrypt = require('bcryptjs');
 const Secret_Key = 'se#@7554cdfcfd%8*@#!';
@@ -37,7 +38,7 @@ const upload = multer({ storage: MyProfile })
 
 // [CLIENT SIDE API]
 
-// user end point url - http://localhost:3000/client/subscribe-now
+// user end point url - http://localhost:3000/client/forget-password
 
 //REGISTER API FOR REGISTER A NEW USER
 router.post(('/register'), upload.single('profile'), async (req, res) => {
@@ -114,6 +115,51 @@ router.post('/login', async (req, res) => {
 });
 
 
+// forget password api
+router.post(('/forget-password'), async (req, res) => {
+    try {
+        const {email} = req.body;
+
+        if(!email){
+            return res.status(400).json({msg:"Email not received, email is required"})
+        }
+
+        const user = await userModel.findOne({email:email});
+
+        if(!user){
+            return res.status(409).json({msg:"User not find"})
+        }
+
+        const token = jwt.sign({email:email}, Secret_Key);
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'vanshtiwari9091@gmail.com',
+              pass: 'Tiwari@21179779821'
+            }
+          });
+          
+          const mailOptions = {
+            from: 'vanshtiwari9091@gmail.com',
+            to: `${email}`,
+            subject: 'Forget password',
+            text: `http://localhost:5173/forget-password/${user._id}/${token}`
+          };
+          
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              return res.status(200).json({msg:"forget password successfully"})
+            }
+          });
+
+    } catch (error) {
+        console.error('error from forget password', error);
+        
+    }
+})
 
 
 //USER PROFILE API FOR SHOWING CURRENT LOGIN USER PROFILE

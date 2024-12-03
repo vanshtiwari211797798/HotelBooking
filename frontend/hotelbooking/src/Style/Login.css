@@ -35,6 +35,7 @@
   .input-group {
     margin-bottom: 15px;
     text-align: left;
+    position: relative;
   }
   
   .input-label {
@@ -45,7 +46,15 @@
     padding:5px 2px 6px 2px;
     font-weight:700;
   }
-  
+  .close-eye{
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 40px;
+    left: 5px;
+    z-index: 1;
+    cursor: pointer;
+  }
   .input-field {
     width: 100%;
     padding: 10px;
@@ -53,6 +62,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     outline:none;
+  }
+  .password{
+    padding-left: 32px;
   }
   
   .password-group {
