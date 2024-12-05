@@ -65,7 +65,7 @@ router.post(('/register'), upload.single('profile'), async (req, res) => {
         const hashPassword = await bcrypt.hash(password, SartRound);
 
         // Creating a new User
-        const User = new userModel({ fname, lname, phone, email, aadhar_number, profile, password: hashPassword });
+        const User = new userModel({ fname, lname, phone, email, aadhar_number, profile, password:hashPassword });
         await User.save();
 
         return res.status(201).json({ message: "User Regster Successfully" });
@@ -102,7 +102,10 @@ router.post('/login', async (req, res) => {
         UserExist.token = token;
 
         if (UserExist.role === 1) {
+            console.log(UserExist.role);
             return res.status(201).json({ message: "Admin login successfully", token: token });
+           
+            
         } else {
             return res.status(200).json({ message: "User login successfully", token: token });
         }
@@ -135,16 +138,17 @@ router.post(('/forget-password'), async (req, res) => {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-              user: 'vanshtiwari9091@gmail.com',
-              pass: 'Tiwari@21179779821'
+              user: 'vanshtiwari586@gmail.com',
+                // our smtp password of email id
+              pass: 'cttxoxecfqyswxni'
             }
           });
           
           const mailOptions = {
-            from: 'vanshtiwari9091@gmail.com',
+            from: 'vanshtiwari586@gmail.com',
             to: `${email}`,
             subject: 'Forget password',
-            text: `http://localhost:5173/forget-password/${user._id}/${token}`
+            text: `http://localhost:5173/reset-password/${user._id}/${token}`
           };
           
           transporter.sendMail(mailOptions, function(error, info){
@@ -161,6 +165,28 @@ router.post(('/forget-password'), async (req, res) => {
     }
 })
 
+
+// reset password api
+router.post(('/reset-password/:id/:token'), async (req, res) => {
+    try {
+        const {id, token} = req.params;
+        const {password} = req.body;
+        
+        jwt.verify(token, Secret_Key);
+             const bcrpt = await bcrypt.hash(password, 10); //10 is sartRound
+
+             if(bcrpt){
+               const updatePass = await userModel.findByIdAndUpdate(id,{ password:bcrpt}, {new:true});
+               if(updatePass){                
+                return res.status(200).json({msg:"Password reset successfully"});
+               }
+             }
+    
+    } catch (error) {
+        console.error('error from reset password', error);
+        
+    }
+})
 
 //USER PROFILE API FOR SHOWING CURRENT LOGIN USER PROFILE
 router.get(('/user-profile'), authProfileChecker, async (req, res) => {

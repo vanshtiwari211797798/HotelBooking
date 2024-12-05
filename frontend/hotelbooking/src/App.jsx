@@ -30,6 +30,7 @@ import GetSearchRoom from './Components/GetSearchRoom'
 import UpdateBooking from './AdminPanel/UpdateBooking'
 import 'react-calendar/dist/Calendar.css';
 import ForgetPassword from './Components/ForgetPassword'
+import ResetPassword from './Components/ResetPassword'
 
 
 
@@ -80,6 +81,14 @@ const router = createBrowserRouter([
     element: <div>
       <Header />
       <ForgetPassword />
+      <Footer />
+    </div>
+  },
+  {
+    path: '/reset-password/:id/:token',
+    element: <div>
+      <Header />
+      <ResetPassword />
       <Footer />
     </div>
   },

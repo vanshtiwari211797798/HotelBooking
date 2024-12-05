@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import '../Style/ForgetPaa.css'
-import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ForgetPassword = () => {
 
@@ -11,7 +12,6 @@ const ForgetPassword = () => {
     // handle submit email
     const handleSubmit = async (e) => {
         e.preventDefault();
-            console.log(email);
             
         try {
             const res = await fetch(`http://localhost:3000/client/forget-password`, {
@@ -23,7 +23,8 @@ const ForgetPassword = () => {
             })
 
             if(res.status === 200){
-                navigate('/login')
+                navigate("/");
+                toast.success("Reset link successfully sent on your email address");
             }
         } catch (error) {
             console.error('error from submiting email', error);
