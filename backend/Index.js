@@ -26,7 +26,7 @@ app.use('/client', router);
 
 
 // This project is running on the port number 3000, we can change or modify-
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 
 ConnectDB().then(() => {
