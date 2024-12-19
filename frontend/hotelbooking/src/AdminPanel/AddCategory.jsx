@@ -1,57 +1,100 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import '../Style/AddCategory.css'; 
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const AddCategory = () => {
+    const navigate = useNavigate();
+    const [room_category_name, setRoomCategoryName] = useState('');
+    const [room_category_price, setRoomCategoryPrice] = useState('');
+    const [room_category_image, setRoomCategoryImage] = useState('');
 
-    const [room_category_name, setroom_category_name] = useState('');
-    const [room_category_price, setroom_category_price] = useState('');
-    const [room_category_image, setroom_category_image] = useState('');
-
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         try {
-            
+            const formData = new FormData();
+            formData.append('room_category_name', room_category_name);
+            formData.append('room_category_price', room_category_price);
+            formData.append('room_category_image', room_category_image);
+
+            const res = await axios.post(`http://localhost:3000/admin/api/add-room-category`, formData);
+            if(res.status === 201){
+                setRoomCategoryName("");
+                setRoomCategoryImage("");
+                setRoomCategoryPrice("");
+                toast.success("Category Added successfully");
+            }else{
+                setRoomCategoryName("");
+                setRoomCategoryImage("");
+                setRoomCategoryPrice("");
+                navigate('/admin/dashboard');
+                toast.error("Somethings went wrong, try again later");
+            }
         } catch (error) {
-            console.error('error from add category frontend', error);
+            console.error('Error from add category frontend', error);
         }
-    }
-    
+    };
 
-  return (
-    <div className="main-container">
-    <form onSubmit={handleSubmit}>
-        <h2 className="reg-heading">ADD ROOM</h2>
+    return (
+        <div className="add-category-container">
+            <form onSubmit={handleSubmit}>
+                <h2 className="form-heading">Add Room Category</h2>
 
+                <div className="form-rows">
+                    <div className="input-group">
+                        <label htmlFor="room_category_name" className="input-label">
+                            Select Category:
+                        </label>
+                        <select
+                            name="room_category_name"
+                            className="input-field"
+                            value={room_category_name}
+                            onChange={(e) => setRoomCategoryName(e.target.value)}
+                            required
+                        >
+                            <option value="">Select a Category</option>
+                            <option value="dilux">Dilux</option>
+                            <option value="superDilux">Super Dilux</option>
+                            <option value="Luxery">Luxury</option>
+                        </select>
+                    </div>
 
+                    <div className="input-group">
+                        <label htmlFor="room_category_price" className="input-label">
+                            Category Price:
+                        </label>
+                        <input
+                            type="text"
+                            name="room_category_price"
+                            className="input-field"
+                            value={room_category_price}
+                            onChange={(e) => setRoomCategoryPrice(e.target.value)}
+                            required
+                        />
+                    </div>
 
-        <div className="input-row">
-        <div className="input-box">
-                <label htmlFor="capacity" className="reg-label">Capacity</label>
-                <select name="room_category_name" id="room_category_name">
-                    <option value="">Select Category..</option>
-                    <option value="dilux">Dilux</option>
-                    <option value="superDilux">superDilux</option>
-                    <option value="Luxery">Luxery</option>
-                </select>
-            </div>
-            <div className="input-box">
-                <label htmlFor="room_category_name" className="reg-label">Category Name:</label>
-                <input type="text" name="room_category_name" className="reg-input"  required/>
-            </div>
-   
+                    <div className="input-group">
+                        <label htmlFor="room_category_image" className="input-label">
+                            Room Image:
+                        </label>
+                        <input
+                            type="file"
+                            name="room_category_image"
+                            onChange={(e) => setRoomCategoryImage(e.target.files[0])}
+                            required
+                        />
+                    </div>
+                </div>
 
-            <div className="input-box">
-                <label htmlFor="roomImage" className="reg-label">Room Image</label>
-                <input type="file" name='room_image' style={{ marginLeft: "20px" }}  required/>
-            </div>
+                <div className="form-row">
+                    <button type="submit" className="submit-button">
+                        Add Room
+                    </button>
+                </div>
+            </form>
         </div>
+    );
+};
 
-        <div className="button">
-            <button type="submit" className="reg-button">ADD ROOM</button>
-        </div>
-        <div className="reg-link">
-        </div>
-    </form>
-</div>
-  )
-}
-
-export default AddCategory
+export default AddCategory;

@@ -15,7 +15,7 @@ const userModel = require('../UserModel/UserModel');
 
 
 
-// admin end point url - http://localhost:3000/admin/api/update-booking
+// admin end point url - http://localhost:3000/admin/api/add-room-category
 
 
 // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbnNoQGdtYWlsLmNvbSIsImlhdCI6MTcyNzI3ODk3NSwiZXhwIjoxNzI3NDUxNzc1fQ.2wyLquF3nKJPId4jhm1iwKv_F64ebKwOqYA4n4W3aJ8

@@ -198,7 +198,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin/add-category',
-    element: <AddCategory />
+    element: <div>
+      <Header />
+      <AddCategory />
+      <Footer />
+    </div>
   },
   // 404 Error page, Page not found
   {

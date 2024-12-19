@@ -524,7 +524,7 @@ const AdminDashboard = () => {
                                     <div className="table-admin_container">
                                         <h2 className="table-content">Rooms</h2>
                                         <Link to={`/admin/add-room`} className='addRoom'>ADD ROOM</Link> &nbsp;
-                                        <Link to={`/admin/add-category`} className='addRoom'>ADD ROOM</Link>
+                                        <Link to={`/admin/add-category`} className='addRoom'>ADD CATEGORY</Link>
                                         <table className="table">
                                             <thead>
                                                 <tr className="tr">
