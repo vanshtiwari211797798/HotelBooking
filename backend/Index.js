@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 const Origin = {
-    origin:'http://localhost:5173',
+    origin:'https://hotelbooking-frontend-squq.onrender.com/',
     method:"GET, POST, PUT, DELETE",
     Credential:true
 }
