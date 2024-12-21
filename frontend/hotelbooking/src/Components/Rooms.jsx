@@ -9,7 +9,7 @@ const Rooms = () => {
 
     const getRoom = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/client/get-rooms`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/get-rooms`, {
                 method: "GET"
             });
 
@@ -65,7 +65,7 @@ const Rooms = () => {
                         <div className="inner3-1n2">
                             <div className="inner3-1n2-in1">
                                 <img 
-                                    src={`http://localhost:3000/${item.room_image}`} 
+                                    src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} 
                                     alt="Room" 
                                     title={`Room Number ${item.room_number}`} 
                                 />

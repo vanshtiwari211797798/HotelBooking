@@ -35,7 +35,7 @@ const UpdateEnquiry = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
       try {
-        const res = await fetch(`http://localhost:3000/admin/api/update-enquiry/${id}`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/update-enquiry/${id}`, {
           method:"PUT",
           headers:{
             'Content-Type':'application/json',
@@ -60,7 +60,7 @@ const UpdateEnquiry = () => {
    useEffect(() => {
     const showEnquiry = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-enquiry-id/${id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-enquiry-id/${id}`, {
                 method:"GET",
                 headers:{
                     Authorization:`Bearer ${localStorage.getItem('admintoken')}`

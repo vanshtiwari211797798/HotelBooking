@@ -16,7 +16,7 @@ const TypesRoom = () => {
         try {
             // when setloader true then loader start 
             setLoader(true)
-            const res = await fetch(`http://localhost:3000/client/get-types-room/${roomType}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/get-types-room/${roomType}`, {
                 method: "GET"
             })
 
@@ -56,7 +56,7 @@ const TypesRoom = () => {
                             return (
                                 <div className="room-card" key={item._id} data-aos="fade-right">
                                     <div className="room-img">
-                                        <img src={`http://localhost:3000/${item.room_image}`} alt="room image" title='room image' />
+                                        <img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room image" title='room image' />
                                     </div>
                                     <div className="room-contents">
                                         <div className="room-discript">

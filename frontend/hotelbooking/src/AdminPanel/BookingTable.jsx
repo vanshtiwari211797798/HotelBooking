@@ -14,7 +14,7 @@ const BookingTable = () => {
     // for showing all booking details
     const showAllbooking = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-bookings`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-bookings`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -34,7 +34,7 @@ const BookingTable = () => {
     // Show the name of current login admin or subAdmin
     const currentLogin = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -84,7 +84,7 @@ const BookingTable = () => {
     // Delete Room Booking
     const DeleteBooking = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-booking/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-booking/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -106,7 +106,7 @@ const BookingTable = () => {
     const ApprovedBooking = async (id, item) => {
         try {
             if (item.booking_status === 'Pending') {
-                const res = await fetch(`http://localhost:3000/admin/api/approved-booking/${id}`, {
+                const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/approved-booking/${id}`, {
                     method: "PUT"
                 })
 
@@ -195,7 +195,7 @@ const BookingTable = () => {
                                                                 <td className="td">{item.phone}</td>
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
                                                                 <td className="td">{item.check_in_date === 'NA' ? item.check_in_date : new Date(item.check_in_date).toLocaleString()}</td>
                                                                 <td className="td">{item.check_out_date === 'NA' ? item.check_out_date : new Date(item.check_out_date).toLocaleString()}</td>
                                                                 <td className="td">{new Date(item.booking_check_in_date).toLocaleDateString()}</td>

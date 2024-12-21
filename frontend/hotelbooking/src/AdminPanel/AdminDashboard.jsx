@@ -42,7 +42,7 @@ const AdminDashboard = () => {
     // Show the name of current login admin or subAdmin
     const currentLogin = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
     // Api for showing all rooms
     const showAllRooms = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-room`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-all-room`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -90,7 +90,7 @@ const AdminDashboard = () => {
     // show all users
     const showAllUsers = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-user`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-all-user`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -111,7 +111,7 @@ const AdminDashboard = () => {
     // show all contacts
     const showAllcontacts = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-contact`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/api/get-all-contact`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -131,7 +131,7 @@ const AdminDashboard = () => {
     // show all enquires
     const showAllenquires = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-enquiry`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-enquiry`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -151,7 +151,7 @@ const AdminDashboard = () => {
     // for showing all booking details
     const showAllbooking = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-bookings`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-bookings`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -171,7 +171,7 @@ const AdminDashboard = () => {
     // Delete User
     const DeleteUser = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-user/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-user/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -192,7 +192,7 @@ const AdminDashboard = () => {
     // Delete Contact
     const DeleteContact = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-user-contact/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-user-contact/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -213,7 +213,7 @@ const AdminDashboard = () => {
     // Delete Enquiry
     const DeleteEnq = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-enquiry/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-enquiry/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -235,7 +235,7 @@ const AdminDashboard = () => {
      // Delete Room
      const DeleteRoom = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-room/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-room/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -256,7 +256,7 @@ const AdminDashboard = () => {
        // Delete Room Booking
        const DeleteBooking = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-booking/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-booking/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -496,7 +496,7 @@ const AdminDashboard = () => {
                                                                 <td className="td">{item.phone}</td>
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.profile}`} alt="profile" style={{ height: "70px", width: "70px", borderRadius: "100%" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.profile}`} alt="profile" style={{ height: "70px", width: "70px", borderRadius: "100%" }} /></td>
                                                                 <td className="td">{item.role}</td>
                                                                 <td className="td"><Link to={`/admin/update-user/${item._id}`} className='Link'>Update</Link></td>
                                                                 <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => DeleteUser(item._id)}>Delete</button></td>
@@ -548,7 +548,7 @@ const AdminDashboard = () => {
                                                             <tr className="tr" key={index}>
                                                                 <td className="td">{index + 1}</td>
                                                                 <td className="td">{item.room_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "70px", width: "70px" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room" style={{ height: "70px", width: "70px" }} /></td>
                                                                 <td className="td">{item.room_category}</td>
                                                                 <td className="td">{item.room_description}</td>
                                                                 <td className="td">{item.room_price}</td>
@@ -620,7 +620,7 @@ const AdminDashboard = () => {
                                                                 <td className="td">{item.phone}</td>
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room" style={{ height: "60px", width: "60px" }} /></td>
                                                                 <td className="td">{item.check_in_date === 'NA' ? item.check_in_date : new Date(item.check_in_date).toLocaleString()}</td>
                                                                 <td className="td">{item.check_out_date === 'NA' ? item.check_out_date : new Date(item.check_out_date).toLocaleString()}</td>
                                                                 <td className="td">{item.booking_date}</td>

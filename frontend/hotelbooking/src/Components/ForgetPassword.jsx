@@ -14,7 +14,7 @@ const ForgetPassword = () => {
         e.preventDefault();
             
         try {
-            const res = await fetch(`http://localhost:3000/client/forget-password`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/forget-password`, {
                 method:"POST",
                 headers:{
                     'Content-Type':'application/json'

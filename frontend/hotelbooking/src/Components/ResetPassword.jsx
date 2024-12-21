@@ -13,7 +13,7 @@ const ResetPassword = () => {
   e.preventDefault();
       
   try {
-      const res = await fetch(`http://localhost:3000/client/reset-password/${id}/${token}`, {
+      const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/reset-password/${id}/${token}`, {
           method:"POST",
           headers:{
               'Content-Type':'application/json'

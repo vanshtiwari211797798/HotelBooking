@@ -13,7 +13,7 @@ const MyBooking = () => {
 
     const getAllBooking =async () => {
         try {
-            const getRoom = await fetch(`http://localhost:3000/client/get-my-booking`, {
+            const getRoom = await fetch(`https://hotelbooking-zs0a.onrender.com/client/get-my-booking`, {
                 method:"GET",
                 headers:{
                     Authorization:`Bearer ${localStorage.getItem('usertoken')}`
@@ -37,7 +37,7 @@ const MyBooking = () => {
       if(item.booking_status === 'Canceled'){
         toast.info("Room allready Canceled")
       }else{
-        const res = await fetch(`http://localhost:3000/client/cancel-booking/${item._id}`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/cancel-booking/${item._id}`, {
           method:"PUT",
           headers:{
             'Content-Type':'application/json',
@@ -104,7 +104,7 @@ const MyBooking = () => {
         {MyBooking.map((item, index) => (
           <tr key={item._id}>
             <td>{index+1}</td>
-            <td><img src={`http://localhost:3000/${item.room_image}`} alt="Room" className="myroom-image" /></td>
+            <td><img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="Room" className="myroom-image" /></td>
             <td>{item.room_number}</td>
             <td>{item.room_category}</td>
             <td>{item.room_price}</td>

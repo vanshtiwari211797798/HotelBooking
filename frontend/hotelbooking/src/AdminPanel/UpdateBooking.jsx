@@ -29,7 +29,7 @@ const UpdateBooking = () => {
     // fetch booking data by id;
     const fetchBooking =async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-booking/${id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-booking/${id}`, {
                 method:"GET",
                 headers:{
                     Authorization:`Bearer ${localStorage.getItem('admintoken')}`
@@ -81,7 +81,7 @@ const UpdateBooking = () => {
         e.preventDefault();
         
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/update-booking/${id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/update-booking/${id}`, {
                 method:"PUT",
                 headers:{
                     'Content-Type':'application/json',

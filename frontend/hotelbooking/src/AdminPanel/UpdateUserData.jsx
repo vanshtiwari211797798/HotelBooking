@@ -32,7 +32,7 @@ const UpdateUserData = () => {
             formData.append('role', role);                 
             formData.append('profile', profile);
 
-            const UpdateUser = await axios.put(`http://localhost:3000/admin/api/update-user/${id}`, formData, {headers:{Authorization:`Bearer ${localStorage.getItem('admintoken')}`}});
+            const UpdateUser = await axios.put(`https://hotelbooking-zs0a.onrender.com/admin/api/update-user/${id}`, formData, {headers:{Authorization:`Bearer ${localStorage.getItem('admintoken')}`}});
 
             if(UpdateUser.status === 200){
                 toast.success('Updated Successfully');
@@ -60,7 +60,7 @@ const UpdateUserData = () => {
     useEffect(() => {
         const showUser = async () => {
             try {
-                const res = await fetch(`http://localhost:3000/admin/api/get-user-details/${id}`, {
+                const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-user-details/${id}`, {
                     method:"GET",
                     headers:{
                         Authorization:`Bearer ${localStorage.getItem('admintoken')}`

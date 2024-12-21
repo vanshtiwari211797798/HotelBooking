@@ -32,7 +32,7 @@ const AddRoom = () => {
             formData.append('total_beds', total_beds);
             formData.append('capacity', capacity);
 
-            const res = await axios.post(`http://localhost:3000/admin/api/add-room`, formData, { headers: { Authorization: `Bearer ${localStorage.getItem('admintoken')}` } })
+            const res = await axios.post(`https://hotelbooking-zs0a.onrender.com/admin/api/add-room`, formData, { headers: { Authorization: `Bearer ${localStorage.getItem('admintoken')}` } })
 
             if(res.status === 201){
                 toast.success('Room added successfully')

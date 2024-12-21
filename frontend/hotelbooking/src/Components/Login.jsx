@@ -49,7 +49,7 @@ const Login = () => {
     const handleLoginUser = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`http://localhost:3000/client/login`, login)
+            const res = await axios.post(`https://hotelbooking-zs0a.onrender.com/client/login`, login)
 
             if (res.status === 200) {
                 localStorage.setItem('usertoken', res.data.token)

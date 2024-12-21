@@ -15,7 +15,7 @@ const RoomTable = () => {
     // Api for showing all rooms
     const showAllRooms = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-room`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-all-room`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -35,7 +35,7 @@ const RoomTable = () => {
     // Show the name of current login admin or subAdmin
     const currentLogin = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -85,7 +85,7 @@ const RoomTable = () => {
        // Delete Room
        const DeleteRoom = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-room/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-room/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -159,7 +159,7 @@ const RoomTable = () => {
                                                             <tr className="tr" key={index}>
                                                                 <td className="td">{index + 1}</td>
                                                                 <td className="td">{item.room_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.room_image}`} alt="room" style={{ height: "70px", width: "70px" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room" style={{ height: "70px", width: "70px" }} /></td>
                                                                 <td className="td">{item.room_category}</td>
                                                                 <td className="td">{item.room_description}</td>
                                                                 <td className="td">{item.room_price}</td>

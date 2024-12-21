@@ -24,7 +24,7 @@ const Profile = () => {
     const myProfile = async () => {
 
         try {
-            const res = await fetch(`http://localhost:3000/client/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('usertoken')}`
@@ -66,7 +66,7 @@ const Profile = () => {
             if (!MYprofile.fname || !MYprofile.phone || !MYprofile.email || !MYprofile.aadhar_number) {
                 toast.error('All field is required')
             } else {
-                const res = await fetch(`http://localhost:3000/client/update-user-account/${MYprofile.id}`, {
+                const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/update-user-account/${MYprofile.id}`, {
                     method: "PUT",
                     headers: {
                         'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ const Profile = () => {
                             <div className="profileData">
                                 <div className="profileForm">
                                     <div className="proform11">
-                                        <img src={`http://localhost:3000/${MYprofile.profile}`} alt="" style={{ height: "70px", width: "70px", borderRadius: "50%", display: "block", margin: "0px auto" }} />
+                                        <img src={`https://hotelbooking-zs0a.onrender.com/${MYprofile.profile}`} alt="" style={{ height: "70px", width: "70px", borderRadius: "50%", display: "block", margin: "0px auto" }} />
                                         {/* <h6>My Profile</h6> */}
                                         <form onSubmit={hanldeSubmit}>
                                             <label htmlFor="fname">First Name </label>

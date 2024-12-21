@@ -14,7 +14,7 @@ const Category = () => {
     const fetchCategory = async () => {
         setLoader(true)
         try {
-            const res = await fetch(`http://localhost:3000/client/get-all-category`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/get-all-category`, {
                 method: "GET"
             })
 
@@ -43,7 +43,7 @@ const Category = () => {
                             <div className="wrapper" key={item._id} data-aos="zoom-in">
                                 <h1>{item.room_category_name}</h1>
                                 <div className="image">
-                                    <img src={`http://localhost:3000/${item.room_category_image}`} alt="delux room price" title='delux room' />
+                                    <img src={`https://hotelbooking-zs0a.onrender.com/${item.room_category_image}`} alt="delux room price" title='delux room' />
                                 </div>
                                 <div className="details">
                                     <Link to={`/types_rooms/${item.room_category_name}`}>View Details</Link>

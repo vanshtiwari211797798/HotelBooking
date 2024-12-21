@@ -14,7 +14,7 @@ const UserTable = () => {
     // show all users
     const showAllUsers = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-user`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-all-user`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -35,7 +35,7 @@ const UserTable = () => {
     // Show the name of current login admin or subAdmin
     const currentLogin = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -84,7 +84,7 @@ const UserTable = () => {
       // Delete User
       const DeleteUser = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-user/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-user/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -161,7 +161,7 @@ const UserTable = () => {
                                                                 <td className="td">{item.phone}</td>
                                                                 <td className="td">{item.email}</td>
                                                                 <td className="td">{item.aadhar_number}</td>
-                                                                <td className="td"><img src={`http://localhost:3000/${item.profile}`} alt="profile" style={{ height: "70px", width: "70px", borderRadius: "100%" }} /></td>
+                                                                <td className="td"><img src={`https://hotelbooking-zs0a.onrender.com/${item.profile}`} alt="profile" style={{ height: "70px", width: "70px", borderRadius: "100%" }} /></td>
                                                                 <td className="td">{item.role}</td>
                                                                 <td className="td"><Link to={`/admin/update-user/${item._id}`} className='Link'>Update</Link></td>
                                                                 <td className="td"><button style={{ height: "40px", width: "80px", fontSize: "16px", background: "#002233", color: "#fff", cursor: "pointer", borderRadius: "5px" }} onClick={() => DeleteUser(item._id)}>Delete</button></td>

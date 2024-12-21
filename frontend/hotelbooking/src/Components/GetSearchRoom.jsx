@@ -25,7 +25,7 @@ const GetSearchRoom = () => {
                             return (
                                 <div className="room-card" key={item._id} data-aos="fade-right">
                                     <div className="room-img">
-                                        <img src={`http://localhost:3000/${item.room_image}`} alt="room image" title='room image' />
+                                        <img src={`https://hotelbooking-zs0a.onrender.com/${item.room_image}`} alt="room image" title='room image' />
                                     </div>
                                     <div className="room-contents">
                                         <div className="room-discript">

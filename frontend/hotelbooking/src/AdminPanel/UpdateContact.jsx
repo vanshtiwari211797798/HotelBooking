@@ -33,7 +33,7 @@ const UpdateContact = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/admin/api/update-user-contact/${id}`, {
+      const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/update-user-contact/${id}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const UpdateContact = () => {
   useEffect(() => {
     const showContact = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/admin/api/get-contact-id/${id}`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-contact-id/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem('admintoken')}`

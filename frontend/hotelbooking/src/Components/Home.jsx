@@ -25,7 +25,7 @@ const Home = () => {
   const subsCribeNow = async () => {
     try {
       if(subscribe){
-        const res = await fetch(`http://localhost:3000/client/subscribe-now`,{
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/subscribe-now`,{
           method:"POST",
           headers:{
             'Content-Type':'application/json'
@@ -129,16 +129,6 @@ const Home = () => {
                 <input type="date" id="booking_check_out_date" name='booking_check_out_date' value={booking_check_out_date} onChange={(e) => setbooking_check_out_date(e.target.value)} min={booking_check_in_date} required/>
               </div>
             </div>
-            {/* <div className="form-group">
-              <label htmlFor="guests">Guests</label>
-              <select id="guests">
-                <option value="">Select Adults</option>
-                <option value={1}>1 Adult</option>
-                <option value={2}>2 Adults</option>
-                <option value={3}>3 Adults</option>
-                <option value={4}>4 Adults</option>
-              </select>
-            </div> */}
             <button className="search-btn" onClick={handleSearchRoom}>SEARCH</button>
           </div>
         </div>

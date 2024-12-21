@@ -15,7 +15,7 @@ const Contacts = () => {
      // show all contacts
      const showAllcontacts = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-all-contact`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-all-contact`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -35,7 +35,7 @@ const Contacts = () => {
      // Show the name of current login admin or subAdmin
      const currentLogin = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -85,7 +85,7 @@ const Contacts = () => {
      // Delete Contact
      const DeleteContact = async (Id) => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/delete-user-contact/${Id}`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-user-contact/${Id}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`

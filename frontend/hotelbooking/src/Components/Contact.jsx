@@ -74,7 +74,7 @@ const Contact = () => {
           }else{
             setNameErr(false)
             setEmailErr(false)
-            const res = await fetch(`http://localhost:3000/client/contact-us`,{
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/contact-us`,{
               method:"POST",
               headers:{
                   'Content-Type':'application/json'

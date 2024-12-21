@@ -24,7 +24,7 @@ const ViewBookingRoom = () => {
     const getRoomById = async () => {
 
       try {
-        const res = await fetch(`http://localhost:3000/client/get-room/${id}`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/get-room/${id}`, {
           method: "GET"
         })
 
@@ -46,7 +46,7 @@ const ViewBookingRoom = () => {
     const myProfile = async () => {
 
       try {
-        const res = await fetch(`http://localhost:3000/client/user-profile`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/user-profile`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem('usertoken')}`
@@ -77,7 +77,7 @@ const ViewBookingRoom = () => {
   // get room original price 
   const getOrigionalPrice = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/client/origional-room-price/${roomNum ? roomNum : ''}`, {
+      const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/origional-room-price/${roomNum ? roomNum : ''}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("usertoken")}`
@@ -162,7 +162,7 @@ const ViewBookingRoom = () => {
 
           }
 
-          const res = await fetch(`http://localhost:3000/client/update-view-room/${id}`, {
+          const res = await fetch(`https://hotelbooking-zs0a.onrender.com/client/update-view-room/${id}`, {
             method: "PUT",
             headers: {
               'Content-Type': 'application/json',
@@ -196,7 +196,7 @@ const ViewBookingRoom = () => {
     <>
       <div className="room-details">
         <div className="image-container">
-          <img src={`http://localhost:3000/${room.room_image}`} className="room-image" alt={'room Image'} title={`Room number ${room.room_number}`} />
+          <img src={`https://hotelbooking-zs0a.onrender.com/${room.room_image}`} className="room-image" alt={'room Image'} title={`Room number ${room.room_number}`} />
         </div>
 
         <div className="details-container">

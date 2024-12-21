@@ -15,7 +15,7 @@ const EnquiryTable = () => {
     // show all enquires
     const showAllenquires = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/admin/api/get-enquiry`, {
+            const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/get-enquiry`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -34,7 +34,7 @@ const EnquiryTable = () => {
  // Show the name of current login admin or subAdmin
  const currentLogin = async () => {
     try {
-        const res = await fetch(`http://localhost:3000/admin/api/user-profile`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/user-profile`, {
             method: "GET",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('admintoken')}`
@@ -86,7 +86,7 @@ const EnquiryTable = () => {
  // Delete Enquiry
  const DeleteEnq = async (Id) => {
     try {
-        const res = await fetch(`http://localhost:3000/admin/api/delete-enquiry/${Id}`, {
+        const res = await fetch(`https://hotelbooking-zs0a.onrender.com/admin/api/delete-enquiry/${Id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('admintoken')}`

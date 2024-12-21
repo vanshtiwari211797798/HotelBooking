@@ -18,7 +18,7 @@ const AddCategory = () => {
             formData.append('room_category_price', room_category_price);
             formData.append('room_category_image', room_category_image);
 
-            const res = await axios.post(`http://localhost:3000/admin/api/add-room-category`, formData);
+            const res = await axios.post(`https://hotelbooking-zs0a.onrender.com/admin/api/add-room-category`, formData);
             if(res.status === 201){
                 setRoomCategoryName("");
                 setRoomCategoryImage("");
