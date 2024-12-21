@@ -13,18 +13,18 @@ const Origin = {
     Credential:true
 }
 
-app.use(express.static(path.join(__dirname, 'client/build')));
+// app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors(Origin));
 app.use(express.json());
 // Serve the static files from the React app
 
 
-// An api endpoint that returns a short list of items
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
+// // An api endpoint that returns a short list of items
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname+'/client/build/index.html'));
+// });
 
-app.use('/profiles', express.static('profiles'));
+// app.use('/profiles', express.static('profiles'));
 
 app.use('/rooms', express.static('rooms'))
 
