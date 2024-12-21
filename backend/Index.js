@@ -24,7 +24,7 @@ app.use(express.json());
 //     res.sendFile(path.join(__dirname+'/client/build/index.html'));
 // });
 
-// app.use('/profiles', express.static('profiles'));
+app.use('/profiles', express.static('profiles'));
 
 app.use('/rooms', express.static('rooms'))
 
