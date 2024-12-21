@@ -55,22 +55,12 @@ const Login = () => {
                 localStorage.setItem('usertoken', res.data.token)
                 setLogin({ email: "", password: "" });
                 navigate("/profile");
-                toast.success("Login Successfully", {
-                    autoClose:2000,
-                    onClose:() => {
-                        window.location.reload();
-                    }
-                })
+                toast.success("Login Successfully")
             } else if (res.status === 201) {
                 localStorage.setItem('admintoken', res.data.token)
                 setLogin({ email: "", password: "" });
                 navigate("/admin/dashboard");
-                toast.success("Login Successfully", {
-                    autoClose:2000,
-                    onClose:() => {
-                        window.location.reload();
-                    },
-                })
+                toast.success("Login Successfully")
             } else {
                 toast.error("Somethings went wrong")
                 setLogin({ email: "", password: "" });
