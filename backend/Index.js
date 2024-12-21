@@ -14,9 +14,16 @@ const Origin = {
 
 app.use(cors(Origin));
 app.use(express.json());
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 app.use('/profiles', express.static('profiles'));
+
 app.use('/rooms', express.static('rooms'))
+
 app.use('/room_category', express.static('room_category'));
+
+
 
 
 // For admin side api router
